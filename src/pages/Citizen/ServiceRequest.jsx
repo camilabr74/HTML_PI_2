@@ -10,10 +10,12 @@ const ServiceAdd = ({ onSubmit }) => {
   const [service, setService] = useState('');
   const [description, setDescription] = useState('');
   const [attachment, setAttachment] = useState(null);
-  const [date, setDate] = useState('');
-  const [time, setTime] = useState('');
 
   const handleFormSubmit = () => {
+    const currentDate = new Date();
+    const formattedDate = currentDate.toISOString().split('T')[0]; // Formato YYYY-MM-DD
+    const formattedTime = currentDate.toTimeString().split(' ')[0]; // Formato HH:MM:SS
+
     onSubmit({
       street,
       neighborhood,
@@ -23,10 +25,11 @@ const ServiceAdd = ({ onSubmit }) => {
       service,
       description,
       attachment,
-      date,
-      time,
+      date: formattedDate,
+      time: formattedTime,
       status: 'em análise',
     });
+
     // Resetar campos se necessário
     setStreet('');
     setNeighborhood('');
@@ -36,8 +39,6 @@ const ServiceAdd = ({ onSubmit }) => {
     setService('');
     setDescription('');
     setAttachment(null);
-    setDate('');
-    setTime('');
   };
 
   return (
@@ -91,8 +92,8 @@ const ServiceAdd = ({ onSubmit }) => {
           required
         >
           <option value="">Selecione a área</option>
-          <option value="Continental">Área Continental</option>
-          <option value="Insular">Área Insular</option>
+          <option value="Área 1">Área 1</option>
+          <option value="Área 2">Área 2</option>
           {/* Adicione mais opções conforme necessário */}
         </select>
       </div>
@@ -143,30 +144,6 @@ const ServiceAdd = ({ onSubmit }) => {
           id="attachment"
           onChange={(e) => setAttachment(e.target.files[0])}
           className="file-input file-input-bordered w-full mt-1"
-        />
-      </div>
-
-      <div>
-        <label htmlFor="date" className="block text-sm font-medium text-gray-700">Data</label>
-        <input
-          type="date"
-          id="date"
-          value={date}
-          onChange={(e) => setDate(e.target.value)}
-          className="input input-bordered w-full mt-1"
-          required
-        />
-      </div>
-
-      <div>
-        <label htmlFor="time" className="block text-sm font-medium text-gray-700">Hora</label>
-        <input
-          type="time"
-          id="time"
-          value={time}
-          onChange={(e) => setTime(e.target.value)}
-          className="input input-bordered w-full mt-1"
-          required
         />
       </div>
     </BaseForm>
