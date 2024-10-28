@@ -13,9 +13,6 @@ const ServiceAdd = ({ onSubmit }) => {
   const [imagePreview, setImagePreview] = useState(null);
 
   const handleFormSubmit = () => {
-    const currentDate = new Date();
-    const formattedDate = currentDate.toISOString().split('T')[0]; // Formato YYYY-MM-DD
-    const formattedTime = currentDate.toTimeString().split(' ')[0]; // Formato HH:MM:SS
 
     onSubmit({
       rua,
@@ -26,9 +23,6 @@ const ServiceAdd = ({ onSubmit }) => {
       servico,
       desc,
       anexo,
-      date: formattedDate,
-      time: formattedTime,
-      status: 'em análise',
     });
 
     // Resetar campos se necessário
