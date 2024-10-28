@@ -2,14 +2,14 @@ import React, { useState } from 'react';
 import BaseForm from '../../components/BaseForm/BaseForm';
 
 const ServiceAdd = ({ onSubmit }) => {
-  const [street, setStreet] = useState('');
-  const [neighborhood, setNeighborhood] = useState('');
-  const [number, setNumber] = useState('');
+  const [rua, setRua] = useState('');
+  const [bairro, setBairro] = useState('');
+  const [numero, setNumero] = useState('');
   const [area, setArea] = useState('');
-  const [zipCode, setZipCode] = useState('');
-  const [service, setService] = useState('');
-  const [description, setDescription] = useState('');
-  const [attachment, setAttachment] = useState(null);
+  const [cep, setCep] = useState('');
+  const [servico, setServico] = useState('');
+  const [desc, setDesc] = useState('');
+  const [anexo, setAnexo] = useState(null);
   const [imagePreview, setImagePreview] = useState(null);
 
   const handleFormSubmit = () => {
@@ -18,34 +18,34 @@ const ServiceAdd = ({ onSubmit }) => {
     const formattedTime = currentDate.toTimeString().split(' ')[0]; // Formato HH:MM:SS
 
     onSubmit({
-      street,
-      neighborhood,
-      number,
+      rua,
+      bairro,
+      numero,
       area,
-      zipCode,
-      service,
-      description,
-      attachment,
+      cep,
+      servico,
+      desc,
+      anexo,
       date: formattedDate,
       time: formattedTime,
       status: 'em análise',
     });
 
     // Resetar campos se necessário
-    setStreet('');
-    setNeighborhood('');
-    setNumber('');
+    setRua('');
+    setBairro('');
+    setNumero('');
     setArea('');
-    setZipCode('');
-    setService('');
-    setDescription('');
-    setAttachment(null);
+    setCep('');
+    setServico('');
+    setDesc('');
+    setAnexo(null);
     setImagePreview(null); // Resetar a prévia da imagem
   };
 
-  const handleAttachmentChange = (e) => {
+  const handleanexoChange = (e) => {
     const file = e.target.files[0];
-    setAttachment(file);
+    setAnexo(file);
 
     // Criar uma URL para a prévia da imagem
     if (file) {
@@ -57,12 +57,12 @@ const ServiceAdd = ({ onSubmit }) => {
   return (
     <BaseForm onSubmit={handleFormSubmit}>
       <div>
-        <label htmlFor="street" className="block text-sm font-medium text-gray-700">Rua</label>
+        <label htmlFor="rua" className="block text-sm font-medium text-gray-700">Rua</label>
         <input
           type="text"
-          id="street"
-          value={street}
-          onChange={(e) => setStreet(e.target.value)}
+          id="rua"
+          value={rua}
+          onChange={(e) => setRua(e.target.value)}
           placeholder="Digite a rua"
           className="input input-bordered w-full mt-1"
           required
@@ -70,12 +70,12 @@ const ServiceAdd = ({ onSubmit }) => {
       </div>
 
       <div>
-        <label htmlFor="neighborhood" className="block text-sm font-medium text-gray-700">Bairro</label>
+        <label htmlFor="bairro" className="block text-sm font-medium text-gray-700">Bairro</label>
         <input
           type="text"
-          id="neighborhood"
-          value={neighborhood}
-          onChange={(e) => setNeighborhood(e.target.value)}
+          id="bairro"
+          value={bairro}
+          onChange={(e) => setBairro(e.target.value)}
           placeholder="Digite o bairro"
           className="input input-bordered w-full mt-1"
           required
@@ -83,12 +83,12 @@ const ServiceAdd = ({ onSubmit }) => {
       </div>
 
       <div>
-        <label htmlFor="number" className="block text-sm font-medium text-gray-700">Número</label>
+        <label htmlFor="numero" className="block text-sm font-medium text-gray-700">Número</label>
         <input
           type="text"
-          id="number"
-          value={number}
-          onChange={(e) => setNumber(e.target.value)}
+          id="numero"
+          value={numero}
+          onChange={(e) => setNumero(e.target.value)}
           placeholder="Digite o número"
           className="input input-bordered w-full mt-1"
           required
@@ -111,12 +111,12 @@ const ServiceAdd = ({ onSubmit }) => {
       </div>
 
       <div>
-        <label htmlFor="zipCode" className="block text-sm font-medium text-gray-700">CEP</label>
+        <label htmlFor="cep" className="block text-sm font-medium text-gray-700">CEP</label>
         <input
           type="text"
-          id="zipCode"
-          value={zipCode}
-          onChange={(e) => setZipCode(e.target.value)}
+          id="cep"
+          value={cep}
+          onChange={(e) => setCep(e.target.value)}
           placeholder="Digite o CEP"
           className="input input-bordered w-full mt-1"
           required
@@ -124,12 +124,12 @@ const ServiceAdd = ({ onSubmit }) => {
       </div>
 
       <div>
-        <label htmlFor="service" className="block text-sm font-medium text-gray-700">Serviço</label>
+        <label htmlFor="servico" className="block text-sm font-medium text-gray-700">Serviço</label>
         <input
           type="text"
-          id="service"
-          value={service}
-          onChange={(e) => setService(e.target.value)}
+          id="servico"
+          value={servico}
+          onChange={(e) => setServico(e.target.value)}
           placeholder="Digite o serviço"
           className="input input-bordered w-full mt-1"
           required
@@ -137,11 +137,11 @@ const ServiceAdd = ({ onSubmit }) => {
       </div>
 
       <div>
-        <label htmlFor="description" className="block text-sm font-medium text-gray-700">Descrição</label>
+        <label htmlFor="desc" className="block text-sm font-medium text-gray-700">Descrição</label>
         <textarea
-          id="description"
-          value={description}
-          onChange={(e) => setDescription(e.target.value)}
+          id="desc"
+          value={desc}
+          onChange={(e) => setDesc(e.target.value)}
           placeholder="Digite a descrição"
           className="textarea textarea-bordered w-full mt-1"
           rows="4"
@@ -150,11 +150,11 @@ const ServiceAdd = ({ onSubmit }) => {
       </div>
 
       <div>
-        <label htmlFor="attachment" className="block text-sm font-medium text-gray-700">Anexo</label>
+        <label htmlFor="anexo" className="block text-sm font-medium text-gray-700">Anexo</label>
         <input
           type="file"
-          id="attachment"
-          onChange={handleAttachmentChange}
+          id="anexo"
+          onChange={handleanexoChange}
           className="file-input file-input-bordered w-full mt-1"
         />
         {imagePreview && (
