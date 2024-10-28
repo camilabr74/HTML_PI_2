@@ -10,6 +10,7 @@ const ServiceAdd = ({ onSubmit }) => {
   const [service, setService] = useState('');
   const [description, setDescription] = useState('');
   const [attachment, setAttachment] = useState(null);
+  const [imagePreview, setImagePreview] = useState(null);
 
   const handleFormSubmit = () => {
     const currentDate = new Date();
@@ -39,6 +40,18 @@ const ServiceAdd = ({ onSubmit }) => {
     setService('');
     setDescription('');
     setAttachment(null);
+    setImagePreview(null); // Resetar a prévia da imagem
+  };
+
+  const handleAttachmentChange = (e) => {
+    const file = e.target.files[0];
+    setAttachment(file);
+
+    // Criar uma URL para a prévia da imagem
+    if (file) {
+      const previewUrl = URL.createObjectURL(file);
+      setImagePreview(previewUrl);
+    }
   };
 
   return (
@@ -94,7 +107,6 @@ const ServiceAdd = ({ onSubmit }) => {
           <option value="">Selecione a área</option>
           <option value="Área 1">Área 1</option>
           <option value="Área 2">Área 2</option>
-          {/* Adicione mais opções conforme necessário */}
         </select>
       </div>
 
@@ -142,9 +154,16 @@ const ServiceAdd = ({ onSubmit }) => {
         <input
           type="file"
           id="attachment"
-          onChange={(e) => setAttachment(e.target.files[0])}
+          onChange={handleAttachmentChange}
           className="file-input file-input-bordered w-full mt-1"
         />
+        {imagePreview && (
+          <img
+            src={imagePreview}
+            alt="Preview"
+            className="mt-2 w-full h-auto rounded-md"
+          />
+        )}
       </div>
     </BaseForm>
   );
