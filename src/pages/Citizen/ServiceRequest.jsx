@@ -156,7 +156,7 @@ const ServiceAdd = ({ onSubmit }) => {
           <img
             src={imagePreview}
             alt="Preview"
-            className="mt-2 w-full h-auto rounded-md"
+            className="mt-2 max-w-xs w-full h-auto rounded-md"
           />
         )}
       </div>
