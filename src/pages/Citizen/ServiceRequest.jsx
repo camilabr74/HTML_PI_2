@@ -50,72 +50,6 @@ const ServiceAdd = ({ onSubmit }) => {
 
   return (
     <BaseForm onSubmit={handleFormSubmit}>
-      <div>
-        <label htmlFor="rua" className="block text-sm font-medium text-gray-700">Rua</label>
-        <input
-          type="text"
-          id="rua"
-          value={rua}
-          onChange={(e) => setRua(e.target.value)}
-          placeholder="Digite a rua"
-          className="input input-bordered w-full mt-1"
-          required
-        />
-      </div>
-
-      <div>
-        <label htmlFor="bairro" className="block text-sm font-medium text-gray-700">Bairro</label>
-        <input
-          type="text"
-          id="bairro"
-          value={bairro}
-          onChange={(e) => setBairro(e.target.value)}
-          placeholder="Digite o bairro"
-          className="input input-bordered w-full mt-1"
-          required
-        />
-      </div>
-
-      <div>
-        <label htmlFor="numero" className="block text-sm font-medium text-gray-700">Número</label>
-        <input
-          type="text"
-          id="numero"
-          value={numero}
-          onChange={(e) => setNumero(e.target.value)}
-          placeholder="Digite o número"
-          className="input input-bordered w-full mt-1"
-          required
-        />
-      </div>
-
-      <div>
-        <label htmlFor="area" className="block text-sm font-medium text-gray-700">Área</label>
-        <select
-          id="area"
-          value={area}
-          onChange={(e) => setArea(e.target.value)}
-          className="select select-bordered w-full mt-1"
-          required
-        >
-          <option value="">Selecione a área</option>
-          <option value="Área 1">Área 1</option>
-          <option value="Área 2">Área 2</option>
-        </select>
-      </div>
-
-      <div>
-        <label htmlFor="cep" className="block text-sm font-medium text-gray-700">CEP</label>
-        <input
-          type="text"
-          id="cep"
-          value={cep}
-          onChange={(e) => setCep(e.target.value)}
-          placeholder="Digite o CEP"
-          className="input input-bordered w-full mt-1"
-          required
-        />
-      </div>
 
       <div>
         <label htmlFor="servico" className="block text-sm font-medium text-gray-700">Serviço</label>
@@ -141,6 +75,73 @@ const ServiceAdd = ({ onSubmit }) => {
           rows="4"
           required
         ></textarea>
+      </div>
+
+      <div>
+        <label htmlFor="area" className="block text-sm font-medium text-gray-700">Área</label>
+        <select
+          id="area"
+          value={area}
+          onChange={(e) => setArea(e.target.value)}
+          className="select select-bordered w-full mt-1"
+          required
+        >
+          <option value="">Selecione a área</option>
+          <option value="areaContinental">Área Continental</option>
+          <option value="areaInsular">Área Insular</option>
+        </select>
+      </div>
+
+      <div>
+        <label htmlFor="cep" className="block text-sm font-medium text-gray-700">CEP</label>
+        <input
+          type="text"
+          id="cep"
+          value={cep}
+          onChange={(e) => setCep(e.target.value)}
+          placeholder="Digite o CEP"
+          className="input input-bordered w-full mt-1"
+          required
+        />
+      </div>
+
+      <div>
+        <label htmlFor="bairro" className="block text-sm font-medium text-gray-700">Bairro</label>
+        <input
+          type="text"
+          id="bairro"
+          value={bairro}
+          onChange={(e) => setBairro(e.target.value)}
+          placeholder="Digite o bairro"
+          className="input input-bordered w-full mt-1"
+          required
+        />
+      </div>
+
+      <div>
+        <label htmlFor="rua" className="block text-sm font-medium text-gray-700">Rua</label>
+        <input
+          type="text"
+          id="rua"
+          value={rua}
+          onChange={(e) => setRua(e.target.value)}
+          placeholder="Digite a rua"
+          className="input input-bordered w-full mt-1"
+          required
+        />
+      </div>
+
+      <div>
+        <label htmlFor="numero" className="block text-sm font-medium text-gray-700">Número</label>
+        <input
+          type="text"
+          id="numero"
+          value={numero}
+          onChange={(e) => setNumero(e.target.value)}
+          placeholder="Digite o número"
+          className="input input-bordered w-full mt-1"
+          required
+        />
       </div>
 
       <div>
