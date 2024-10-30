@@ -3,10 +3,10 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 //import './Button.css'; // Importando o CSS do botão
 
-function ButtonCTA({ to, children, onClick }) {
+function ButtonCTA({ to, children}) {
   return (
     <Link to={to}>
-      <button className="btn btn-accent sm:btn-sm md:btn-md lg:btn-lg">
+      <button className="btn btn-accent sm:btn-sm md:btn-md lg:btn-md mt-4">
         {children}
       </button>
     </Link>
