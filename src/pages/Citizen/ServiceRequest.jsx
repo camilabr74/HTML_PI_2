@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import BaseForm from '../../components/BaseForm/BaseForm';
 
-const ServiceAdd = ({ onSubmit }) => {
+const ServiceAdd = () => {
+//const ServiceAdd = ({ onSubmit }) => {
+
   const [rua, setRua] = useState('');
   const [bairro, setBairro] = useState('');
   const [numero, setNumero] = useState('');
@@ -9,12 +11,14 @@ const ServiceAdd = ({ onSubmit }) => {
   const [cep, setCep] = useState('');
   const [servico, setServico] = useState('');
   const [desc, setDesc] = useState('');
+  const [protocolo, setProtocolo] = useState('');
   const [anexo, setAnexo] = useState(null);
   const [imagePreview, setImagePreview] = useState(null);
 
   const handleFormSubmit = () => {
-
-    onSubmit({
+    // Processa os dados do formulário conforme necessário
+    console.log({
+//   onSubmit({
       rua,
       bairro,
       numero,
@@ -22,6 +26,7 @@ const ServiceAdd = ({ onSubmit }) => {
       cep,
       servico,
       desc,
+      protocolo,
       anexo,
     });
 
@@ -33,6 +38,7 @@ const ServiceAdd = ({ onSubmit }) => {
     setCep('');
     setServico('');
     setDesc('');
+    setProtocolo('');
     setAnexo(null);
     setImagePreview(null); // Resetar a prévia da imagem
   };
@@ -50,7 +56,6 @@ const ServiceAdd = ({ onSubmit }) => {
 
   return (
     <BaseForm onSubmit={handleFormSubmit}>
-
       <div>
         <label htmlFor="servico" className="block text-sm font-medium text-gray-700">Serviço</label>
         <input
@@ -78,24 +83,53 @@ const ServiceAdd = ({ onSubmit }) => {
       </div>
 
       <div>
-        <label htmlFor="area" className="block text-sm font-medium text-gray-700">Área</label>
-        <select
-          id="area"
-          value={area}
-          onChange={(e) => setArea(e.target.value)}
-          className="select select-bordered w-full mt-1"
+        <label htmlFor="protocolo" className="block text-sm font-medium text-gray-700">Protocolo</label>
+        <input
+          type="text"
+          id="protocolo"
+          value={protocolo}
+          onChange={(e) => setProtocolo(e.target.value)}
+          placeholder="Digite o protocolo"
+          className="input input-bordered w-full mt-1"
           required
-        >
-          <option value="">Selecione a área</option>
-          <option value="areaContinental">Área Continental</option>
-          <option value="areaInsular">Área Insular</option>
-        </select>
+        />
       </div>
+
+      <div>
+        <label className="block text-sm font-medium text-gray-700">Área</label>
+        <div className="mt-1 space-y-2">
+          <label className="flex items-center">
+            <input
+              type="radio"
+              name="area"
+              value="areaContinental"
+              checked={area === "areaContinental"}
+              onChange={(e) => setArea(e.target.value)}
+              className="radio radio-bordered"
+              required
+            />
+            <span className="ml-2">Continental</span>
+          </label>
+          <label className="flex items-center">
+            <input
+              type="radio"
+              name="area"
+              value="areaInsular"
+              checked={area === "areaInsular"}
+              onChange={(e) => setArea(e.target.value)}
+              className="radio radio-bordered"
+              required
+            />
+            <span className="ml-2">Insular </span>
+          </label>
+        </div>
+      </div>
+
 
       <div>
         <label htmlFor="cep" className="block text-sm font-medium text-gray-700">CEP</label>
         <input
-          type="text"
+          type="number"
           id="cep"
           value={cep}
           onChange={(e) => setCep(e.target.value)}
