@@ -1,8 +1,21 @@
 import React, { useState } from 'react';
 import BaseForm from '../../components/BaseForm/BaseForm';
 
+const bairrosSaoVicente = {
+  insular: [
+    "Beira Mar", "Boa Vista", "Centro", "Catiapoã", "Esplanada dos Barreiros", "Gonzaguinha", "Ilha Porchat",
+    "Itararé", "Japuí", "Jardim Guaçu", "Jardim Independência", "Jardim Irmã Dolores", "Cidade Náutica", "Náutica I",
+    "Náutica II", "Náutica III", "Parque Bitaru", "Parque São Vicente", "Vila Margarida", "Vila Valença", "Vila Voturuá"
+  ],
+  continental: [
+    "Área Rural", "Humaitá", "Jardim Rio Branco", "Jardim Samaritá", "Jardim São Manoel", "Parque das Bandeiras",
+    "Parque Continental", "Vila Ema", "Vila Melo", "Vila Nossa Senhora de Fátima ou Vila Fátima",
+    "Vila Nova Mariana", "Vila São Jorge"
+  ]
+};
+
 const ServiceAdd = () => {
-//const ServiceAdd = ({ onSubmit }) => {
+  //const ServiceAdd = ({ onSubmit }) => {
 
   const [rua, setRua] = useState('');
   const [bairro, setBairro] = useState('');
@@ -18,7 +31,7 @@ const ServiceAdd = () => {
   const handleFormSubmit = () => {
     // Processa os dados do formulário conforme necessário
     console.log({
-//   onSubmit({
+      //   onSubmit({
       rua,
       bairro,
       numero,
@@ -53,6 +66,12 @@ const ServiceAdd = () => {
       setImagePreview(previewUrl);
     }
   };
+
+  const handleAreaChange = (e) => {
+    setArea(e.target.value);
+    setBairro(''); // Resetar bairro quando a área é trocada
+  };
+
 
   return (
     <BaseForm onSubmit={handleFormSubmit}>
@@ -102,9 +121,9 @@ const ServiceAdd = () => {
             <input
               type="radio"
               name="area"
-              value="areaContinental"
-              checked={area === "areaContinental"}
-              onChange={(e) => setArea(e.target.value)}
+              value="continental"
+              checked={area === "continental"}
+              onChange={handleAreaChange}
               className="radio radio-bordered"
               required
             />
@@ -114,15 +133,38 @@ const ServiceAdd = () => {
             <input
               type="radio"
               name="area"
-              value="areaInsular"
-              checked={area === "areaInsular"}
-              onChange={(e) => setArea(e.target.value)}
+              value="insular"
+              checked={area === "insular"}
+              onChange={handleAreaChange}
               className="radio radio-bordered"
               required
             />
-            <span className="ml-2">Insular </span>
+            <span className="ml-2">Insular</span>
           </label>
         </div>
+      </div>
+
+
+      <div>
+        <label
+          htmlFor="bairro"
+          className="block text-sm font-medium text-gray-700"
+        >
+          {`Bairro - Exibindo os bairros da área selecionada acima: ${area || ""}`}
+        </label>
+        <select
+          id="bairro"
+          value={bairro}
+          onChange={(e) => setBairro(e.target.value)}
+          className="select select-bordered w-full mt-1"
+          required
+          disabled={!area} // Desativa o campo até que a área seja selecionada
+        >
+          <option value="" disabled>Selecione o bairro</option>
+          {Array.isArray(bairrosSaoVicente[area]) && bairrosSaoVicente[area].map((bairro, index) => (
+            <option key={index} value={bairro}>{bairro}</option>
+          ))}
+        </select>
       </div>
 
 
@@ -134,19 +176,6 @@ const ServiceAdd = () => {
           value={cep}
           onChange={(e) => setCep(e.target.value)}
           placeholder="Digite o CEP"
-          className="input input-bordered w-full mt-1"
-          required
-        />
-      </div>
-
-      <div>
-        <label htmlFor="bairro" className="block text-sm font-medium text-gray-700">Bairro</label>
-        <input
-          type="text"
-          id="bairro"
-          value={bairro}
-          onChange={(e) => setBairro(e.target.value)}
-          placeholder="Digite o bairro"
           className="input input-bordered w-full mt-1"
           required
         />
