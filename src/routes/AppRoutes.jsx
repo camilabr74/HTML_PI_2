@@ -5,7 +5,7 @@ import SignUp from "../pages/Citizen/SignUp.jsx";
 import HomeCitizen from "../pages/Citizen/HomeCitizen.jsx";
 import Login from "../pages/Citizen/Login.jsx";
 import ServiceSelection from "../pages/Citizen/ServiceSelection.jsx";
-import RegisterEmployee from "../pages/Goverment/Admin/RegisterEmployee.jsx";
+import EmployeeRegisterForm from "../pages/Goverment/Admin/RegisterEmployee.jsx";
 import AddNewService from "../pages/Goverment/Admin/AddService.jsx";
 // import AddNewService from "../pages/Goverment/Admin/AddNewService.jsx";
 import LoginGoverment from "../pages/Goverment/Login.jsx";
@@ -22,7 +22,7 @@ const AppRouter = () => {
                 <Route path="/service-selection" element={<ServiceSelection />} />
                 <Route path="/sign-up" element={<SignUp/>}/>
                 <Route path="/add-new-service" element={<AddNewService />} />
-                <Route path="/register-employee" element={<RegisterEmployee />} />
+                <Route path="/register-employee" element={<EmployeeRegisterForm />} />
                 <Route path="/login-goverment" element={<LoginGoverment />} />
                 <Route path="/home-employee" element={<ServiceRequested />} />
 
