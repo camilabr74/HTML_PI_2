@@ -1,15 +1,33 @@
 import React, { useState } from 'react';
 import BaseForm from '../../components/BaseForm/BaseForm';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
-
-  const Login = ({ onSubmit }) => {
+const Login = ({ onSubmit }) => {
   const [email, setEmail] = useState('');
   const [senha, setSenha] = useState('');
+  const [permission, setPermission] = useState('citizen');
+  const [error, setError] = useState('');
+  const navigate = useNavigate(); // Inicializando o hook de navegação
 
-  const handleFormSubmit = () => {
-    onSubmit({ email, senha });
-    setEmail('');
-    setSenha('');
+  const handleFormSubmit = async (event) => {
+    event.preventDefault();
+    try {
+      const response = await axios.post('https://orlok.pythonanywhere.com/api/v1/auth/', {
+        email,
+        senha,
+        permission: 'citizen'
+      });
+  
+      if (response.data.status === 'ok') {
+        console.log('Usuário autenticado:', response.data);
+        navigate('/home');
+      } else {
+        setError('Falha na autenticação.'); 
+      }
+    } catch (error) {
+      setError(error.response ? error.response.data.response : 'Erro na conexão com o servidor.');
+    } 
   };
 
   return (
@@ -34,7 +52,7 @@ import BaseForm from '../../components/BaseForm/BaseForm';
           Senha
         </label>
         <input
-          type="senha"
+          type="password"
           id="senha"
           value={senha}
           onChange={(e) => setSenha(e.target.value)}
@@ -43,6 +61,9 @@ import BaseForm from '../../components/BaseForm/BaseForm';
           required
         />
       </div>
+
+      {error && <p className="text-red-500">{error}</p>}
+
     </BaseForm>
   );
 };
