@@ -4,7 +4,7 @@ import ButtonCTA from '../ButtonCTA/ButtonCTA';
 const BaseForm = ({ onSubmit, children }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
-    onSubmit(); // Chama a função de envio definida nos componentes específicos
+    onSubmit(e); // Chama a função de envio definida nos componentes específicos
   };
 
   return (
