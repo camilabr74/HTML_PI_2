@@ -16,7 +16,7 @@ const LoginGoverment = ({ onSubmit }) => {
       const response = await axios.post('https://orlok.pythonanywhere.com/api/v1/auth/', {
         email,
         senha,
-        permission: 'admin'
+        permission: 'employee'
       });
   
       if (response.data.status === 'ok') {
