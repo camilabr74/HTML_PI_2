@@ -1,17 +1,40 @@
 import React, { useState } from 'react';
 import BaseForm from '../../../components/BaseForm/BaseForm';
+import axios from 'axios';
 
 const AddNewService = ({ onSubmit }) => {
-  const [name, setName] = useState('');
-  const [description, setDescription] = useState('');
-  const [deadline, setDeadline] = useState('');
+  const [nome, setNome] = useState('');
+  const [desc, setDesc] = useState('');
+  const [prazo, setPrazo] = useState('');
+  const [error, setError] = useState('');
 
-  const handleFormSubmit = () => {
-    console.log('Submitting:', { name, description, deadline }); // Log dos valores do formulário
-    // onSubmit({ name, description, deadline }); // Deixe esta linha comentada se não quiser submeter
-    setName('');
-    setDescription('');
-    setDeadline('');
+  const handleFormSubmit = async (event) => {
+    event.preventDefault();
+    const token = localStorage.getItem('authToken'); 
+    if (!token) {
+      setError('Acesso negado. Faça login como administrador.');
+      return;
+    }
+
+    try {
+      const response = await axios.post(
+        'https://orlok.pythonanywhere.com/api/v1/service/',
+        {
+          nome,
+          desc,
+          prazo
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`, // Adiciona o token no cabeçalho
+          },
+        }
+      );
+      console.log('Cadastro com sucesso', response.data)
+
+    } catch (error) {
+      setError(error.response ? error.response.data.response : 'Erro na conexão com o servidor.');
+    } 
   };
 
   return (
@@ -20,9 +43,9 @@ const AddNewService = ({ onSubmit }) => {
         <label htmlFor="name" className="block text-sm font-medium text-gray-700">Nome</label>
         <input
           type="text"
-          id="name"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
+          id="nome"
+          value={nome}
+          onChange={(e) => setNome(e.target.value)}
           placeholder="Digite o nome do serviço"
           className="input input-bordered w-full mt-1"
           required
@@ -32,9 +55,9 @@ const AddNewService = ({ onSubmit }) => {
       <div>
         <label htmlFor="description" className="block text-sm font-medium text-gray-700">Descrição</label>
         <textarea
-          id="description"
-          value={description}
-          onChange={(e) => setDescription(e.target.value)}
+          id="desc"
+          value={desc}
+          onChange={(e) => setDesc(e.target.value)}
           placeholder="Digite a descrição do serviço"
           className="textarea textarea-bordered w-full mt-1"
           rows="4"
@@ -46,14 +69,16 @@ const AddNewService = ({ onSubmit }) => {
         <label htmlFor="deadline" className="block text-sm font-medium text-gray-700">Prazo para realização(dias)</label>
         <input
           type="number"
-          id="deadline"
-          value={deadline}
-          onChange={(e) => setDeadline(e.target.value)}
+          id="prazo"
+          value={prazo}
+          onChange={(e) => setPrazo(e.target.value)}
           placeholder="Digite o prazo em dias"
           className="input input-bordered w-full mt-1"
           required
         />
       </div>
+
+      {error && <p className="text-red-500">{error}</p>}
     </BaseForm>
   );
 };
