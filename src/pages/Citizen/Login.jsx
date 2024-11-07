@@ -20,6 +20,9 @@ const Login = ({ onSubmit }) => {
       });
   
       if (response.data.status === 'ok') {
+
+        const { token } = response.data; // Supondo que o token esteja na resposta
+        localStorage.setItem('authToken', token); 
         console.log('Usuário autenticado:', response.data);
         navigate('/home');
       } else {
