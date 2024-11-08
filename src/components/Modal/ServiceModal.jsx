@@ -31,6 +31,18 @@ const ServiceModal = ({ service, newStatus, onClose, onStatusChange, onUpdateSta
 
                 <div className="mt-4">
                     <label className="label">
+                        <span className="label-text">Data prevista para realizar o serviço</span>
+                    </label>
+                    <input
+                        type="date"
+                        className="input input-bordered w-full"
+                        value={service.dataServico}
+                        onChange={(e) => onDataServicoChange(e.target.value)}
+                    />
+                </div>
+
+                <div className="mt-4">
+                    <label className="label">
                         <span className="label-text">Alterar Status</span>
                     </label>
                     <select
