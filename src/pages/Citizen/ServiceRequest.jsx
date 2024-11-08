@@ -15,8 +15,6 @@ const bairrosSaoVicente = {
 };
 
 const ServiceAdd = () => {
-  //const ServiceAdd = ({ onSubmit }) => {
-
   const [rua, setRua] = useState('');
   const [bairro, setBairro] = useState('');
   const [numero, setNumero] = useState('');
@@ -28,39 +26,62 @@ const ServiceAdd = () => {
   const [anexo, setAnexo] = useState(null);
   const [imagePreview, setImagePreview] = useState(null);
 
-  const handleFormSubmit = () => {
-    // Processa os dados do formulário conforme necessário
-    console.log({
-      //   onSubmit({
-      rua,
-      bairro,
-      numero,
-      area,
-      cep,
-      servico,
-      desc,
-      protocolo,
-      anexo,
-    });
+  const handleFormSubmit = async (e) => {
+    e.preventDefault();
+    const token = localStorage.getItem('authToken'); 
 
-    // Resetar campos se necessário
-    setRua('');
-    setBairro('');
-    setNumero('');
-    setArea('');
-    setCep('');
-    setServico('');
-    setDesc('');
-    setProtocolo('');
-    setAnexo(null);
-    setImagePreview(null); // Resetar a prévia da imagem
-  };
+    if (!token) {
+        alert("Usuário não autenticado. Por favor, faça login novamente.");
+        return;
+    }
+
+    const formData = new FormData();
+    formData.append('rua', rua);
+    formData.append('bairro', bairro);
+    formData.append('numero', numero);
+    formData.append('area', area);
+    formData.append('cep', cep);
+    formData.append('servico', servico);
+    formData.append('desc', desc);
+    formData.append('protocolo', protocolo);
+    if (anexo) formData.append('file', anexo);
+
+    try {
+        const response = await fetch('https://orlok.pythonanywhere.com/api/v1/janitorial/', {
+            method: 'POST',
+            headers: {
+                'Authorization': `Bearer ${token}`, 
+            },
+            body: formData,
+        });
+
+        const result = await response.json();
+        if (response.ok) {
+            alert('Solicitação enviada com sucesso!');
+            // Resetar campos após sucesso
+            setRua('');
+            setBairro('');
+            setNumero('');
+            setArea('');
+            setCep('');
+            setServico('');
+            setDesc('');
+            setProtocolo('');
+            setAnexo(null);
+            setImagePreview(null);
+        } else {
+            alert(`Erro: ${result.error}`);
+        }
+    } catch (error) {
+        console.error('Erro ao enviar solicitação:', error);
+        alert('Erro ao enviar solicitação. Por favor, tente novamente.');
+    }
+};
+
 
   const handleanexoChange = (e) => {
     const file = e.target.files[0];
     setAnexo(file);
-
-    // Criar uma URL para a prévia da imagem
     if (file) {
       const previewUrl = URL.createObjectURL(file);
       setImagePreview(previewUrl);
@@ -69,7 +90,7 @@ const ServiceAdd = () => {
 
   const handleAreaChange = (e) => {
     setArea(e.target.value);
-    setBairro(''); // Resetar bairro quando a área é trocada
+    setBairro('');
   };
 
 
@@ -256,8 +277,11 @@ const ServiceAdd = () => {
           />
         )}
       </div>
+      
     </BaseForm>
+    
   );
+
 };
 
 export default ServiceAdd;
