@@ -1,16 +1,31 @@
 // src/components/Button/Button.jsx
 import React from 'react';
 import { Link } from 'react-router-dom';
-//import './Button.css'; // Importando o CSS do botão
 
-function ButtonCTA({ to, children, onClick }) {
+function ButtonCTA({ to, type = 'button', children, className = '', onClick }) {
+  if (to) {
+    // Se a propriedade "to" for passada, use o Link
+    return (
+      <Link to={to}>
+        <button
+          className={`btn btn-accent ${className}`}
+          type="button"
+        >
+          {children}
+        </button>
+      </Link>
+    );
+  }
+
+  // Caso contrário, é um botão normal que pode ser usado para submit
   return (
-    <Link to={to}>
-      <button className="btn btn-accent sm:btn-sm md:btn-md lg:btn-lg">
-        {children}
-      </button>
-    </Link>
-
+    <button
+      className={`btn btn-accent ${className}`}
+      type={type}
+      onClick={onClick} // onClick no botão normal
+    >
+      {children}
+    </button>
   );
 }
 
