@@ -1,38 +1,35 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import ButtonCTA from '../ButtonCTA/ButtonCTA';
 import ServiceModal from '../Modal/ServiceModal';
-// Exemplo de dados com status inicial "Pendente"
-const initialServices = [
-    {
-        protocolo: '12345',
-        servico: 'Corte de Grama',
-        rua: 'Rua das Flores',
-        numero: '10',
-        bairro: 'Centro',
-        dataSolicitacao: '2024-11-01',
-        prazo: '2024-11-10',
-        solicitante: 'João Silva',
-        status: 'Pendente',
-        anexo: null, // URL da foto anexada
-    },
-    {
-        protocolo: '67890',
-        servico: 'Pintura de Faixas',
-        rua: 'Avenida Principal',
-        numero: '100',
-        bairro: 'Vila Nova',
-        dataSolicitacao: '2024-10-20',
-        prazo: '2024-11-05',
-        solicitante: 'Maria Souza',
-        status: 'Em andamento',
-        anexo: null, // Sem foto anexada
-    },
-];
 
 const ServiceList = () => {
-    const [services, setServices] = useState(initialServices);
+    const [services, setServices] = useState([]);
     const [selectedService, setSelectedService] = useState(null);
     const [newStatus, setNewStatus] = useState('');
+
+    const fetchServices = async () => {
+        try {
+            const response = await fetch('https://orlok.pythonanywhere.com/api/v1/janitorial/', {
+                headers: {
+                    'Authorization': `Bearer ${localStorage.getItem('authToken')}`,
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                }
+            });
+            if (!response.ok) {
+                throw new Error("Erro ao buscar dados da API");
+            }
+            const data = await response.json();
+            setServices(data);
+        } catch (error) {
+            console.error("Erro ao buscar dados da API:", error);
+        }
+    };
+
+    // useEffect para chamar a função fetchServices quando o componente for montado
+    useEffect(() => {
+        fetchServices();
+    }, []);
 
     const handleOpenModal = (service) => {
         setSelectedService(service);
@@ -43,17 +40,18 @@ const ServiceList = () => {
         setNewStatus(event.target.value);
     };
 
-    const handleUpdateStatus = () => {
+    const handleUpdateStatus = (updatedService) => {
+        // Atualiza o serviço com o novo status e data_prevista
         setServices((prevServices) =>
             prevServices.map((service) =>
-                service.protocolo === selectedService.protocolo
-                    ? { ...service, status: newStatus }
+                service.id === updatedService.id
+                    ? { ...service, status: updatedService.status, data_prevista: updatedService.data_prevista }
                     : service
             )
         );
+        // Fecha o modal após a atualização
         setSelectedService(null);
     };
-
     // Filtra serviços por status
     const servicesByStatus = (status) => {
         return services.filter((service) => service.status === status);
@@ -63,7 +61,7 @@ const ServiceList = () => {
         <div className="p-4">
             <h2 className="text-2xl font-bold mb-4">Serviços de Zeladoria</h2>
 
-            {['Pendente', 'Em andamento', 'Serviço Pausado', 'Finalizado'].map((status) => (
+            {['pendente', 'Em andamento', 'Serviço Pausado', 'Finalizado'].map((status) => (
                 <div key={status} className="mb-8">
                     <h3 className="text-xl font-semibold mb-4">{status}</h3>
                     <div className="overflow-x-auto">
@@ -90,9 +88,14 @@ const ServiceList = () => {
                                             <td>{service.rua}</td>
                                             <td>{service.numero}</td>
                                             <td>{service.bairro}</td>
-                                            <td>{service.dataSolicitacao}</td>
-                                            <td>{service.prazo}</td>
-                                            <td>{service.solicitante}</td>
+                                            <td>{service.data}</td>
+                                            <td>
+                                                {/* Verifica se a data_prevista está vazia e o status é Pendente */}
+                                                {service.status === 'pendente' && !service.data_prevista
+                                                    ? 'Não agendado'
+                                                    : service.data_prevista}
+                                            </td>
+                                            <td>{service.user_name}</td>
                                             <td>
                                                 <ButtonCTA
                                                     onClick={() => handleOpenModal(service)}
@@ -117,9 +120,8 @@ const ServiceList = () => {
                             newStatus={newStatus}
                             onClose={() => setSelectedService(null)}
                             onStatusChange={handleStatusChange}
-                            onUpdateStatus={handleUpdateStatus}
+                            onUpdateService={handleUpdateStatus}
                         />
-
                     </div>
                 </div>
             ))}
