@@ -22,7 +22,6 @@ const ServiceAdd = () => {
   const [cep, setCep] = useState('');
   const [servico, setServico] = useState('');
   const [desc, setDesc] = useState('');
-  const [protocolo, setProtocolo] = useState('');
   const [anexo, setAnexo] = useState(null);
   const [imagePreview, setImagePreview] = useState(null);
 
@@ -57,7 +56,6 @@ const ServiceAdd = () => {
     formData.append('cep', cep);
     formData.append('servico', servico);
     formData.append('desc', desc);
-    formData.append('protocolo', protocolo);
     if (anexo) formData.append('file', anexo);
 
     try {
@@ -130,19 +128,6 @@ const ServiceAdd = () => {
     required
   ></textarea>
 </div>
-
-      <div>
-        <label htmlFor="protocolo" className="block text-sm font-medium text-gray-700">Protocolo</label>
-        <input
-          type="text"
-          id="protocolo"
-          value={protocolo}
-          onChange={(e) => setProtocolo(e.target.value)}
-          placeholder="Digite o protocolo"
-          className="input input-bordered w-full mt-1"
-          required
-        />
-      </div>
 
       <div role="alert" className="alert alert-warning">
         <svg
