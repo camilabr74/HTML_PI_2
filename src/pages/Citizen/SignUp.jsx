@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
+import axios from 'axios';
+import BaseForm from '../../components/BaseForm/BaseForm';
 
 function SignUp() {
   const [nome, setNome] = useState('');
@@ -6,67 +8,76 @@ function SignUp() {
   const [telefone, setTelefone] = useState('');
   const [senha, setSenha] = useState('');
 
-  const cadastrar = (e) => {
-    e.preventDefault();
-
-    fetch('https://orlok.pythonanywhere.com/api/v1/user/', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json',
-      },
-      body: JSON.stringify({
-        nome: nome,
-        email: email,
-        telefone: telefone,
-        senha: senha,
-      }),
+  const handleSignUpSubmit = (e) => {
+    axios.post('https://orlok.pythonanywhere.com/api/v1/citizen/', {
+      nome: nome,
+      email: email,
+      telefone: telefone,
+      senha: senha,
     })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-      })
-      .catch((err) => console.log(err));
+    .then((response) => {
+      console.log(response.data);
+    })
+    .catch((error) => {
+      console.log(error);
+    });
   };
 
   return (
-    <div>
-      <form onSubmit={cadastrar}>
-        Nome:
+    <BaseForm onSubmit={handleSignUpSubmit}>
+      <div>
+        <label htmlFor="nome" className="block text-sm font-medium text-gray-700">Nome</label>
         <input
           type="text"
           id="nome"
           value={nome}
           onChange={(e) => setNome(e.target.value)}
+          placeholder="Digite seu nome"
+          className="input input-bordered w-full mt-1"
+          required
         />
-        <br />
-        Email:
+      </div>
+
+      <div>
+        <label htmlFor="email" className="block text-sm font-medium text-gray-700">Email</label>
         <input
-          type="text"
+          type="email"
           id="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
+          placeholder="Digite seu email"
+          className="input input-bordered w-full mt-1"
+          required
         />
-        <br />
-        Telefone:
+      </div>
+
+      <div>
+        <label htmlFor="telefone" className="block text-sm font-medium text-gray-700">Telefone</label>
         <input
           type="text"
           id="telefone"
           value={telefone}
           onChange={(e) => setTelefone(e.target.value)}
+          placeholder="Digite seu telefone"
+          className="input input-bordered w-full mt-1"
+          required
         />
-        <br />
-        Senha:
+      </div>
+
+      <div>
+        <label htmlFor="senha" className="block text-sm font-medium text-gray-700">Senha</label>
         <input
           type="password"
           id="senha"
           value={senha}
           onChange={(e) => setSenha(e.target.value)}
+          placeholder="Digite sua senha"
+          className="input input-bordered w-full mt-1"
+          required
         />
-        <br />
-        <button type="submit">Ok</button>
-      </form>
-    </div>
+      </div>
+
+    </BaseForm>
   );
 }
 
