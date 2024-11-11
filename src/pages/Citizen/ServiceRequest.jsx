@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import BaseForm from '../../components/BaseForm/BaseForm';
 
 const bairrosSaoVicente = {
@@ -25,6 +25,20 @@ const ServiceAdd = () => {
   const [protocolo, setProtocolo] = useState('');
   const [anexo, setAnexo] = useState(null);
   const [imagePreview, setImagePreview] = useState(null);
+
+  // Recuperar o serviço selecionado do localStorage ao carregar o componente
+  useEffect(() => {
+    const selectedService = localStorage.getItem('selectedService');
+    const serviceDescription = localStorage.getItem('serviceDescription');
+    
+    if (selectedService) {
+      setServico(selectedService); // Define o estado com o serviço recuperado
+    }
+  
+    if (serviceDescription) {
+      setDesc(serviceDescription); // Define o estado com a descrição recuperada
+    }
+  }, []);
 
   const handleFormSubmit = async (e) => {
     e.preventDefault();
@@ -64,9 +78,6 @@ const ServiceAdd = () => {
             setNumero('');
             setArea('');
             setCep('');
-            setServico('');
-            setDesc('');
-            setProtocolo('');
             setAnexo(null);
             setImagePreview(null);
         } else {
@@ -77,7 +88,6 @@ const ServiceAdd = () => {
         alert('Erro ao enviar solicitação. Por favor, tente novamente.');
     }
 };
-
 
   const handleanexoChange = (e) => {
     const file = e.target.files[0];
@@ -93,36 +103,33 @@ const ServiceAdd = () => {
     setBairro('');
   };
 
-
   return (
-
     <BaseForm onSubmit={handleFormSubmit}>
+<div>
+  <label htmlFor="servico" className="block text-sm font-medium text-gray-700">Serviço</label>
+  <input
+    type="text"
+    id="servico"
+    value={servico}
+    readOnly
+    placeholder="Digite o serviço"
+    className="input input-bordered w-full mt-1"
+    required
+  />
+</div>
 
-      <div>
-        <label htmlFor="servico" className="block text-sm font-medium text-gray-700">Serviço</label>
-        <input
-          type="text"
-          id="servico"
-          value={servico}
-          onChange={(e) => setServico(e.target.value)}
-          placeholder="Digite o serviço"
-          className="input input-bordered w-full mt-1"
-          required
-        />
-      </div>
-
-      <div>
-        <label htmlFor="desc" className="block text-sm font-medium text-gray-700">Descrição</label>
-        <textarea
-          id="desc"
-          value={desc}
-          onChange={(e) => setDesc(e.target.value)}
-          placeholder="Digite a descrição"
-          className="textarea textarea-bordered w-full mt-1"
-          rows="4"
-          required
-        ></textarea>
-      </div>
+<div>
+  <label htmlFor="desc" className="block text-sm font-medium text-gray-700">Descrição</label>
+  <textarea
+    id="desc"
+    value={desc}
+    readOnly
+    placeholder="Digite a descrição"
+    className="textarea textarea-bordered w-full mt-1"
+    rows="auto"
+    required
+  ></textarea>
+</div>
 
       <div>
         <label htmlFor="protocolo" className="block text-sm font-medium text-gray-700">Protocolo</label>
