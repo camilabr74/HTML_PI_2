@@ -28,7 +28,7 @@ function ServiceSelection() {
     localStorage.setItem('serviceDescription', descricaoServico); // Armazena a descrição do serviço
 
     setTimeout(() => {
-      window.location.href = '/service-request'; // Redireciona para a página de solicitação de serviço
+      window.location.href = '/HTML_PI_2/service-request'; // Redireciona para a página de solicitação de serviço
     }, 100); // Adiciona um pequeno atraso para garantir que o localStorage seja atualizado
   };
 

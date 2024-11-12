@@ -23,7 +23,7 @@ const LoginGoverment = ({ onSubmit }) => {
         console.log('Usuário autenticado:', response.data);
         const { token } = response.data; // Supondo que o token esteja na resposta
         localStorage.setItem('authToken', token); // Armazena o token no localStorage
-        navigate('/home-employee');
+        navigate('/HTML_PI_2/home-employee');
       } else {
         setError('Falha na autenticação.'); 
       }
