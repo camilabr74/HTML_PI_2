@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import InputMask from 'react-input-mask';
 import BaseForm from '../../components/BaseForm/BaseForm';
 
 function SignUp() {
@@ -53,9 +54,8 @@ function SignUp() {
 
       <div>
         <label htmlFor="telefone" className="block text-sm font-medium text-gray-700">Telefone</label>
-        <input
-          type="text"
-          id="telefone"
+        <InputMask
+          mask="(99) 99999-9999"
           value={telefone}
           onChange={(e) => setTelefone(e.target.value)}
           placeholder="Digite seu telefone"
