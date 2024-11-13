@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import BaseForm from '../../components/BaseForm/BaseForm';
+import BaseForm from '../../components/BaseForm';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
-import ButtonOutline from '../../components/ButtonOutline/ButtonOutline';
+import ButtonOutline from '../../components/ButtonOutline';
 
 const Login = ({ onSubmit }) => {
   const [email, setEmail] = useState('');
