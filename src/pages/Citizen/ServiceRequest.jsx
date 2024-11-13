@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import BaseForm from '../../components/BaseForm';
+import BaseForm from '../../components/BaseForm/BaseForm';
 
 const bairrosSaoVicente = {
   insular: [

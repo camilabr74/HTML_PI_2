@@ -1,5 +1,5 @@
-import ButtonCTA from "../../components/ButtonCTA";
-import MyRequestsTable from "../../components/MyRequests";
+import ButtonCTA from "../../components/ButtonCTA/ButtonCTA";
+import MyRequestsTable from "../../components/MyRequests/MyRequests";
 
 const HomeCitizen = () => {
   return (

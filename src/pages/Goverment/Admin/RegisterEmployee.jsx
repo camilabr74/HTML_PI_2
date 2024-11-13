@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import BaseForm from '../../../components/BaseForm';
+import BaseForm from '../../../components/BaseForm/BaseForm';
 
 const EmployeeRegisterForm = () => {
   const [nome, setNome] = useState('');

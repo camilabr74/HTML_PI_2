@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import ButtonCTA from './ButtonCTA';
-import ServiceModal from './ServiceModal';
+import ButtonCTA from '../ButtonCTA/ButtonCTA';
+import ServiceModal from '../Modal/ServiceModal';
 
 const ServiceList = () => {
     const [services, setServices] = useState([]);
