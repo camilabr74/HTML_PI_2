@@ -13,7 +13,7 @@ import ServiceAdd from "../pages/Citizen/ServiceRequest.jsx";
 import HomeEmployee from "../pages/Goverment/HomeEmployee.jsx";
 
 const AppRouter = () => {
-        const isAdmin = true; 
+        const isAdmin = false; 
     
         return (
             <BrowserRouter>
@@ -28,7 +28,7 @@ const AppRouter = () => {
                     <Route path="/HTML_PI_2/register-employee" element={<EmployeeRegisterForm />} />
                     <Route path="/HTML_PI_2/login-goverment" element={<LoginGoverment />} />
                     <Route path="/HTML_PI_2/home-employee" element={<HomeEmployee />} />
-                    <Route path="/" element={<GetData />} />
+                    <Route path="/" element={<Login />} />
                 </Routes>
             </BrowserRouter>
         );
