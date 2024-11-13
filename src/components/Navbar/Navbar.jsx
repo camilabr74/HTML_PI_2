@@ -48,14 +48,14 @@ const Navbar = ({ isAdmin, isLoggedIn, isEmployee, onLogout }) => {
                         </button>
                         <ul>
                             {isEmployee || isAdmin ? (
-                                <li><Link to="/home-employee" className="btn btn-ghost">Home</Link></li>
+                                <li><Link to="/HTML_PI_2/home-employee" className="btn btn-ghost">Home</Link></li>
                             ) : (
-                                <li><Link to="/home" className="btn btn-ghost">Home</Link></li>
+                                <li><Link to="/HTML_PI_2/home" className="btn btn-ghost">Home</Link></li>
                             )}
                             {isAdmin && (
                                 <>
-                                    <li><Link to="/add-new-service" className="btn btn-ghost">Adicionar Novo Serviço</Link></li>
-                                    <li><Link to="/register-employee" className="btn btn-ghost">Cadastrar Funcionário</Link></li>
+                                    <li><Link to="/HTML_PI_2/add-new-service" className="btn btn-ghost">Adicionar Novo Serviço</Link></li>
+                                    <li><Link to="/HTML_PI_2/register-employee" className="btn btn-ghost">Cadastrar Funcionário</Link></li>
                                 </>
                             )}
                         </ul>
@@ -66,14 +66,14 @@ const Navbar = ({ isAdmin, isLoggedIn, isEmployee, onLogout }) => {
             <div className="navbar-end hidden md:flex">
                 <ul className="menu menu-horizontal px-1">
                     {isEmployee || isAdmin ? (
-                        <li><Link to="/home-employee" className="btn btn-ghost">Home</Link></li>
+                        <li><Link to="/HTML_PI_2/home-employee" className="btn btn-ghost">Home</Link></li>
                     ) : (
-                        <li><Link to="/home" className="btn btn-ghost">Home</Link></li>
+                        <li><Link to="/HTML_PI_2/home" className="btn btn-ghost">Home</Link></li>
                     )}
                     {isAdmin && (
                         <>
-                            <li><Link to="/add-new-service" className="btn btn-ghost">Adicionar Novo Serviço</Link></li>
-                            <li><Link to="/register-employee" className="btn btn-ghost">Cadastrar Funcionário</Link></li>
+                            <li><Link to="/HTML_PI_2/add-new-service" className="btn btn-ghost">Adicionar Novo Serviço</Link></li>
+                            <li><Link to="/HTML_PI_2/register-employee" className="btn btn-ghost">Cadastrar Funcionário</Link></li>
                         </>
                     )}
                 </ul>

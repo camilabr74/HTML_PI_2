@@ -10,17 +10,10 @@ function ServiceSelection() {
     // Função para buscar serviços da API com token de autenticação
     const fetchServicos = async () => {
       try {
-        // Obtendo o token armazenado (por exemplo, no localStorage)
-        const token = localStorage.getItem('authToken'); // Certifique-se de que o token foi salvo com essa chave no login
-
-        // Configuração do cabeçalho com o token de autenticação
-        const headers = {
-          Authorization: `Bearer ${token}`,
-        };
-
-        // Fazendo a requisição GET com o cabeçalho de autenticação
+        const token = localStorage.getItem('authToken');
+        const headers = { Authorization: `Bearer ${token}` };
         const response = await axios.get('https://orlok.pythonanywhere.com/api/v1/service/', { headers });
-        setServicos(response.data); // Atualiza o estado com os dados dos serviços
+        setServicos(response.data);
       } catch (err) {
         setError('Falha ao carregar serviços. Por favor, tente novamente.');
         console.error('Erro ao buscar serviços:', err);
@@ -30,8 +23,13 @@ function ServiceSelection() {
     fetchServicos();
   }, []);
 
-  const handleSolicitarServico = (nomeServico) => {
-    alert(`Serviço solicitado: ${nomeServico}`);
+  const handleSolicitarServico = (nomeServico, descricaoServico) => {
+    localStorage.setItem('selectedService', nomeServico); // Armazena o serviço selecionado no localStorage
+    localStorage.setItem('serviceDescription', descricaoServico); // Armazena a descrição do serviço
+
+    setTimeout(() => {
+      window.location.href = '/HTML_PI_2/service-request'; // Redireciona para a página de solicitação de serviço
+    }, 100); // Adiciona um pequeno atraso para garantir que o localStorage seja atualizado
   };
 
   return (
@@ -49,10 +47,9 @@ function ServiceSelection() {
               <p>{servico.prazo}</p>
               <div className="flex flex-col justify-center items-center">
                 <ButtonCTA
-                  to="/service-request"
                   className="btn btn-primary mt-4"
-                  onClick={() => handleSolicitarServico(servico.nomeServico)}
-                >
+                  onClick={() => handleSolicitarServico(servico.nome, `${servico.desc}\nPrazo: ${servico.prazo} dias`)}
+                  >
                   Solicitar Serviço
                 </ButtonCTA>
               </div>

@@ -24,7 +24,7 @@ const Login = ({ onSubmit }) => {
         const { token } = response.data; // Supondo que o token esteja na resposta
         localStorage.setItem('authToken', token); 
         console.log('Usuário autenticado:', response.data);
-        navigate('/home');
+        navigate('/HTML_PI_2/home');
       } else {
         setError('Falha na autenticação.'); 
       }
