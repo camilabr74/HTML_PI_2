@@ -1,14 +1,27 @@
 // src/components/Button/Button.jsx
 import React from 'react';
-//import './Button.css'; // Importando o CSS do botão
+import { Link } from 'react-router-dom';
 
-function Button({ children, onClick }) {
+function ButtonOutline({ children, onClick, to, className }) {
   return (
-    <button className="btn btn-outline btn-accent sm:btn-sm md:btn-md lg:btn-lg">
-    {children}
-    </button>
-
+    <div className="flex items-center justify-center">
+      {to ? (
+        <Link 
+          to={to} 
+          className={`btn btn-outline btn-accent sm:btn-sm md:btn-md lg:btn-lg ${className}`}
+        >
+          {children}
+        </Link>
+      ) : (
+        <button 
+          onClick={onClick} 
+          className={`btn btn-outline btn-accent sm:btn-sm md:btn-md lg:btn-lg ${className}`}
+        >
+          {children}
+        </button>
+      )}
+    </div>
   );
 }
 
-export default Button;
+export default ButtonOutline;
