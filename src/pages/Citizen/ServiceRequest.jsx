@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import BaseForm from '../../components/BaseForm/BaseForm';
+import InputMask from 'react-input-mask';
+
 
 const bairrosSaoVicente = {
   insular: [
@@ -200,12 +202,11 @@ const ServiceAdd = () => {
 
       <div>
         <label htmlFor="cep" className="block text-sm font-medium text-gray-700">CEP</label>
-        <input
-          type="number"
-          id="cep"
+        <InputMask
+          mask="99999-999"
           value={cep}
           onChange={(e) => setCep(e.target.value)}
-          placeholder="Digite o CEP"
+          placeholder="Digite seu CEP"
           className="input input-bordered w-full mt-1"
           required
         />
