@@ -1,20 +1,50 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 import BaseForm from '../../../components/BaseForm/BaseForm';
 
-
-
-const EmployeeRegisterForm = ({ onSubmit }) => {
+const EmployeeRegisterForm = () => {
   const [nome, setNome] = useState('');
   const [cargo, setCargo] = useState('');
   const [email, setEmail] = useState('');
   const [senha, setSenha] = useState('');
+  const [error, setError] = useState(null);
 
-  const handleFormSubmit = () => {
-    onSubmit({ nome, cargo, email, senha });
-    setNome('');
-    setCargo('');
-    setEmail('');
-    setSenha('');
+  const handleFormSubmit = async (event) => {
+    event.preventDefault();
+
+    const token = localStorage.getItem('authToken'); 
+    if (!token) {
+      setError('Acesso negado. Faça login como administrador.');
+      return;
+    }
+
+    try {
+      const response = await axios.post(
+        'https://orlok.pythonanywhere.com/api/v1/employee/',
+        {
+          nome,
+          cargo,
+          email,
+          senha,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`, 
+          },
+        }
+      );
+      console.log('Funcionário cadastrado com sucesso', response.data);
+      
+      // Limpa os campos do formulário após o envio
+      setNome('');
+      setCargo('');
+      setEmail('');
+      setSenha('');
+      setError(null);
+
+    } catch (error) {
+      setError(error.response ? error.response.data.response : 'Erro na conexão com o servidor.');
+    }
   };
 
   return (
@@ -61,7 +91,7 @@ const EmployeeRegisterForm = ({ onSubmit }) => {
       <div>
         <label htmlFor="senha" className="block text-sm font-medium text-gray-700">Senha</label>
         <input
-          type="senha"
+          type="password"
           id="senha"
           value={senha}
           onChange={(e) => setSenha(e.target.value)}
@@ -70,6 +100,9 @@ const EmployeeRegisterForm = ({ onSubmit }) => {
           required
         />
       </div>
+
+      {error && <p className="text-red-500 mt-2">{error}</p>}
+
     </BaseForm>
   );
 };

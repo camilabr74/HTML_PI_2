@@ -19,15 +19,15 @@ const AppRouter = () => {
             <BrowserRouter>
                 <Navbar isAdmin={isAdmin} />
                 <Routes>
-                    <Route path="/home" element={<HomeCitizen />} />
-                    <Route path="/login" element={<Login />} />
-                    <Route path="/service-request" element={<ServiceAdd />} />
-                    <Route path="/service-selection" element={<ServiceSelection />} />
-                    <Route path="/sign-up" element={<SignUp />} />
-                    <Route path="/add-new-service" element={<AddNewService />} />
-                    <Route path="/register-employee" element={<EmployeeRegisterForm />} />
-                    <Route path="/login-goverment" element={<LoginGoverment />} />
-                    <Route path="/home-employee" element={<HomeEmployee />} />
+                    <Route path="/HTML_PI_2/home" element={<HomeCitizen />} />
+                    <Route path="/HTML_PI_2/login" element={<Login />} />
+                    <Route path="/HTML_PI_2/service-request" element={<ServiceAdd />} />
+                    <Route path="/HTML_PI_2/service-selection" element={<ServiceSelection />} />
+                    <Route path="/HTML_PI_2/sign-up" element={<SignUp />} />
+                    <Route path="/HTML_PI_2/add-new-service" element={<AddNewService />} />
+                    <Route path="/HTML_PI_2/register-employee" element={<EmployeeRegisterForm />} />
+                    <Route path="/HTML_PI_2/login-goverment" element={<LoginGoverment />} />
+                    <Route path="/HTML_PI_2/home-employee" element={<HomeEmployee />} />
                     <Route path="/" element={<GetData />} />
                 </Routes>
             </BrowserRouter>

@@ -11,7 +11,7 @@ const HomeCitizen = () => {
       </section>
 
       <section className="w-full flex justify-center py-8">
-        <ButtonCTA to="/service-selection">Solicitar Serviço</ButtonCTA>
+        <ButtonCTA to="/HTML_PI_2/service-selection">Solicitar Serviço</ButtonCTA>
       </section>
 
       <section>

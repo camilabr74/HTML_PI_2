@@ -6,7 +6,6 @@ import { useNavigate } from 'react-router-dom';
 const LoginGoverment = ({ onSubmit }) => {
   const [email, setEmail] = useState('');
   const [senha, setSenha] = useState('');
-  const [permission, setPermission] = useState('citizen');
   const [error, setError] = useState('');
   const navigate = useNavigate(); // Inicializando o hook de navegação
 
@@ -23,7 +22,7 @@ const LoginGoverment = ({ onSubmit }) => {
         console.log('Usuário autenticado:', response.data);
         const { token } = response.data; // Supondo que o token esteja na resposta
         localStorage.setItem('authToken', token); // Armazena o token no localStorage
-        navigate('/home-employee');
+        navigate('/HTML_PI_2/home-employee');
       } else {
         setError('Falha na autenticação.'); 
       }
@@ -63,23 +62,6 @@ const LoginGoverment = ({ onSubmit }) => {
           required
         />
       </div>
-
-      {/* <div>
-        <label htmlFor="permission" className="block text-sm font-medium text-gray-700">
-          Permissão
-        </label>
-        <select
-          id="permission"
-          value={permission}
-          onChange={(e) => setPermission(e.target.value)}
-          className="input input-bordered w-full mt-1"
-          required
-        >
-          <option value="citizen">Cidadão</option>
-          <option value="admin">Administrador</option>
-          <option value="employee">Funcionário</option>
-        </select>
-      </div> */}
 
       {error && <p className="text-red-500">{error}</p>}
 
