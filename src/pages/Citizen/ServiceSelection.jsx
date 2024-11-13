@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import ButtonCTA from '../../components/ButtonCTA/ButtonCTA';
+import ButtonCTA from '../../components/ButtonCTA';
 import axios from 'axios';
 
 function ServiceSelection() {

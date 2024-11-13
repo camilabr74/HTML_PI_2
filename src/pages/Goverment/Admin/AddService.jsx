@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import BaseForm from '../../../components/BaseForm/BaseForm';
+import BaseForm from '../../../components/BaseForm';
 import axios from 'axios';
 
 const AddNewService = ({ onSubmit }) => {

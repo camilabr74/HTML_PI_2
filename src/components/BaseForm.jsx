@@ -1,5 +1,5 @@
 import React from 'react';
-import ButtonCTA from '../ButtonCTA/ButtonCTA';
+import ButtonCTA from './ButtonCTA';
 
 const BaseForm = ({ onSubmit, children }) => {
   const handleSubmit = (e) => {

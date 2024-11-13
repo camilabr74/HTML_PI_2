@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import BaseForm from '../../components/BaseForm/BaseForm';
+import BaseForm from '../../components/BaseForm';
 
 function SignUp() {
   const [nome, setNome] = useState('');
