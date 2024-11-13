@@ -7,6 +7,7 @@ const ServiceList = () => {
     const [selectedService, setSelectedService] = useState(null);
     const [newStatus, setNewStatus] = useState('');
 
+    // Função para buscar os serviços
     const fetchServices = async () => {
         try {
             const response = await fetch('https://orlok.pythonanywhere.com/api/v1/janitorial/', {
@@ -26,10 +27,10 @@ const ServiceList = () => {
         }
     };
 
-    // useEffect para chamar a função fetchServices quando o componente for montado
+    // useEffect para chamar a função fetchServices quando o componente for montado ou quando services mudar
     useEffect(() => {
         fetchServices();
-    }, []);
+    }, [services]); // Agora, o efeito será acionado sempre que a lista de serviços mudar
 
     const handleOpenModal = (service) => {
         setSelectedService(service);
@@ -40,18 +41,24 @@ const ServiceList = () => {
         setNewStatus(event.target.value);
     };
 
-    const handleUpdateStatus = (updatedService) => {
-        // Atualiza o serviço com o novo status e data_prevista
-        setServices((prevServices) =>
-            prevServices.map((service) =>
-                service.id === updatedService.id
-                    ? { ...service, status: updatedService.status, data_prevista: updatedService.data_prevista }
-                    : service
-            )
-        );
-        // Fecha o modal após a atualização
-        setSelectedService(null);
+    const handleUpdateStatus = async (updatedService) => {
+        try {
+            // Atualiza o serviço com o novo status e data_prevista
+            await fetchServices(); // Recarrega os dados atualizados após o status ser alterado
+            setServices((prevServices) =>
+                prevServices.map((service) =>
+                    service.id === updatedService.id
+                        ? { ...service, status: updatedService.status, data_prevista: updatedService.data_prevista }
+                        : service
+                )
+            );
+            // Fecha o modal após a atualização
+            setSelectedService(null);
+        } catch (error) {
+            console.error("Erro ao atualizar os dados dos serviços:", error);
+        }
     };
+
     // Filtra serviços por status
     const servicesByStatus = (status) => {
         return services.filter((service) => service.status === status);
@@ -90,7 +97,6 @@ const ServiceList = () => {
                                             <td>{service.bairro}</td>
                                             <td>{service.data}</td>
                                             <td>
-                                                {/* Verifica se a data_prevista está vazia e o status é Pendente */}
                                                 {service.status === 'pendente' && !service.data_prevista
                                                     ? 'Não agendado'
                                                     : service.data_prevista}
@@ -115,13 +121,15 @@ const ServiceList = () => {
                             </tbody>
                         </table>
 
-                        <ServiceModal
-                            service={selectedService}
-                            newStatus={newStatus}
-                            onClose={() => setSelectedService(null)}
-                            onStatusChange={handleStatusChange}
-                            onUpdateService={handleUpdateStatus}
-                        />
+                        {selectedService && (
+                            <ServiceModal
+                                service={selectedService}
+                                newStatus={newStatus}
+                                onClose={() => setSelectedService(null)}
+                                onStatusChange={handleStatusChange}
+                                onUpdateService={handleUpdateStatus}
+                            />
+                        )}
                     </div>
                 </div>
             ))}
