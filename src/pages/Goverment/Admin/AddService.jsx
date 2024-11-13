@@ -7,12 +7,18 @@ const AddNewService = ({ onSubmit }) => {
   const [desc, setDesc] = useState('');
   const [prazo, setPrazo] = useState('');
   const [error, setError] = useState('');
+  const [toastMessage, setToastMessage] = useState('');
+  const [toastType, setToastType] = useState('');
+  const [showToast, setShowToast] = useState(false);
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-    const token = localStorage.getItem('authToken'); 
+    const token = localStorage.getItem('authToken');
     if (!token) {
-      setError('Acesso negado. Faça login como administrador.');
+      setToastMessage('Acesso negado. Faça login como administrador.');
+      setToastType('alert-info');
+      setShowToast(true);
+      setTimeout(() => setShowToast(false), 2500); // Esconde o toast após 2.5 segundos
       return;
     }
 
@@ -30,15 +36,31 @@ const AddNewService = ({ onSubmit }) => {
           },
         }
       );
-      console.log('Cadastro com sucesso', response.data)
+      // Mensagem de sucesso
+      setToastMessage('Serviço cadastrado com sucesso!');
+      setToastType('alert-success');
+      setShowToast(true);
 
+      // Limpar campos após o sucesso
+      setNome('');
+      setDesc('');
+      setPrazo('');
+
+      // Esconde o toast após 2.5 segundos
+      setTimeout(() => setShowToast(false), 2500);
     } catch (error) {
-      setError(error.response ? error.response.data.response : 'Erro na conexão com o servidor.');
-    } 
+      setToastMessage(error.response ? error.response.data.response : 'Erro na conexão com o servidor.');
+      setToastType('alert-error');
+      setShowToast(true);
+
+      // Esconde o toast após 2.5 segundos
+      setTimeout(() => setShowToast(false), 2500);
+    }
   };
 
   return (
     <BaseForm onSubmit={handleFormSubmit}>
+
       <div>
         <label htmlFor="name" className="block text-sm font-medium text-gray-700">Nome</label>
         <input
@@ -66,7 +88,7 @@ const AddNewService = ({ onSubmit }) => {
       </div>
 
       <div>
-        <label htmlFor="deadline" className="block text-sm font-medium text-gray-700">Prazo para realização(dias)</label>
+        <label htmlFor="deadline" className="block text-sm font-medium text-gray-700">Prazo para realização (dias)</label>
         <input
           type="number"
           id="prazo"
@@ -79,6 +101,15 @@ const AddNewService = ({ onSubmit }) => {
       </div>
 
       {error && <p className="text-red-500">{error}</p>}
+
+      {showToast && (
+        <div className="toast toast-center toast-middle">
+          <div className={`alert ${toastType}`}>
+            <span>{toastMessage}</span>
+          </div>
+        </div>
+      )}
+
     </BaseForm>
   );
 };
