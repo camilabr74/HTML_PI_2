@@ -1,6 +1,5 @@
 import React from "react";
 import { Route, BrowserRouter, Routes } from "react-router-dom";
-import GetData from '../components/MyRequests/MyRequests.jsx';
 import Navbar from "../components/Navbar/Navbar";
 import SignUp from "../pages/Citizen/SignUp.jsx";
 import HomeCitizen from "../pages/Citizen/HomeCitizen.jsx";
