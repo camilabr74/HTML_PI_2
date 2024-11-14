@@ -5,8 +5,8 @@ function HomeEmployee() {
   return (
     <div>
    
-      <ServiceList></ServiceList>
-    
+      <ServiceList endpoint='https://orlok.pythonanywhere.com/api/v1/janitorial/' />
+
     </div>
     
   );
