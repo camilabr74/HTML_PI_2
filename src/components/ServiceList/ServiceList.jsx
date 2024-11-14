@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import ButtonCTA from '../ButtonCTA/ButtonCTA';
 import ServiceModal from '../Modal/ServiceModal';
 
-const ServiceList = () => {
+const ServiceList = ({ endpoint }) => {
     const [services, setServices] = useState([]);
     const [selectedService, setSelectedService] = useState(null);
     const [newStatus, setNewStatus] = useState('');
@@ -10,7 +10,7 @@ const ServiceList = () => {
     // Função para buscar os serviços
     const fetchServices = async () => {
         try {
-            const response = await fetch('https://orlok.pythonanywhere.com/api/v1/janitorial/', {
+            const response = await fetch(endpoint, {
                 headers: {
                     'Authorization': `Bearer ${localStorage.getItem('authToken')}`,
                     'Content-Type': 'application/json',
@@ -30,7 +30,7 @@ const ServiceList = () => {
     // useEffect para chamar a função fetchServices quando o componente for montado ou quando services mudar
     useEffect(() => {
         fetchServices();
-    }, [services]); // Agora, o efeito será acionado sempre que a lista de serviços mudar
+    }, [endpoint]); // Agora, o efeito será acionado sempre que a lista de serviços mudar
 
     const handleOpenModal = (service) => {
         setSelectedService(service);
