@@ -71,7 +71,7 @@ const ServiceList = ({ endpoint }) => {
         <div className="p-4">
             <h2 className="text-2xl font-bold mb-4">Serviços de Zeladoria</h2>
 
-            {['pendente', 'Em andamento', 'Serviço Pausado', 'Finalizado'].map((status) => (
+            {['Pendente', 'Em andamento', 'Serviço Pausado', 'Finalizado'].map((status) => (
                 <div key={status} className="mb-8">
                     <h3 className="text-xl font-semibold mb-4">{status}</h3>
                     <div className="overflow-x-auto">
@@ -100,7 +100,7 @@ const ServiceList = ({ endpoint }) => {
                                             <td>{service.bairro}</td>
                                             <td>{service.data}</td>
                                             <td>
-                                                {service.status === 'pendente' && !service.data_prevista
+                                                {service.status === 'Pendente' && !service.data_prevista
                                                     ? 'Não agendado'
                                                     : service.data_prevista}
                                             </td>
