@@ -7,6 +7,9 @@ const ServiceList = ({ endpoint }) => {
     const [selectedService, setSelectedService] = useState(null);
     const [newStatus, setNewStatus] = useState('');
 
+    const isCitizenRequest = endpoint === 'https://orlok.pythonanywhere.com/api/v1/citizen/requests';
+
+
     // Função para buscar os serviços
     const fetchServices = async () => {
         try {
@@ -128,7 +131,8 @@ const ServiceList = ({ endpoint }) => {
                                 onClose={() => setSelectedService(null)}
                                 onStatusChange={handleStatusChange}
                                 onUpdateService={handleUpdateStatus}
-                            />
+                                showDateAndStatusFields={!isCitizenRequest} // Passa false se for uma requisição do cidadão
+                                />
                         )}
                     </div>
                 </div>
