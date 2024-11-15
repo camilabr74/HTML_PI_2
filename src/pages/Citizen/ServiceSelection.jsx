@@ -34,6 +34,11 @@ function ServiceSelection() {
 
   return (
     <div className="w-full p-8">
+
+      <h1 className="text-2xl p-2 font-bold text-accent">
+        SERVIÇOS DE ZELADORIA      
+      </h1>
+      
       {error && <p className="text-red-500">{error}</p>}
       {servicos.length > 0 ? (
         servicos.map((servico) => (
@@ -49,7 +54,7 @@ function ServiceSelection() {
                 <ButtonCTA
                   className="btn btn-primary mt-4"
                   onClick={() => handleSolicitarServico(servico.nome, `${servico.desc}\nPrazo: ${servico.prazo} dias`)}
-                  >
+                >
                   Solicitar Serviço
                 </ButtonCTA>
               </div>
