@@ -111,14 +111,18 @@ const ServiceAdd = () => {
     setBairro('');
   };
 
-    // Função para atualizar o valor da descrição
-    const handleChange = (e) => {
-      setDesc(e.target.value);
-    };
+  // Função para atualizar o valor da descrição
+  const handleChange = (e) => {
+    setDesc(e.target.value);
+  };
 
   return (
     <BaseForm onSubmit={handleFormSubmit}>
 
+      <h1 className="text-2xl p-2 font-bold text-accent">
+        SOLICITAR SERVIÇO
+      </h1>
+      
       <div>
         <label htmlFor="servico" className="block text-sm font-medium text-gray-700">Serviço</label>
         <input
