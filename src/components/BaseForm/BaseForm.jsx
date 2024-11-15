@@ -8,11 +8,13 @@ const BaseForm = ({ onSubmit, children }) => {
   };
 
   return (
-    <form className="space-y-4 p-12" onSubmit={handleSubmit}>
+    <form className="space-y-4 p-12 pb-4" onSubmit={handleSubmit}>
       {children}
-      <ButtonCTA type="submit" className="btn btn-primary">
-        Enviar
-      </ButtonCTA>
+      <div className="flex justify-center">
+        <ButtonCTA type="submit" className="btn btn-primary px-12 text-lg">
+          Enviar
+        </ButtonCTA>
+      </div>
     </form>
   );
 };
