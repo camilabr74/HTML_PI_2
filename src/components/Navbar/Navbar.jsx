@@ -20,7 +20,7 @@ const Navbar = ({ isAdmin, isLoggedIn, isEmployee, onLogout }) => {
 
                 <img src={logo} alt="Logo" className="h-10 w-10 mr-2" />
 
-                <span className="text-xl font-bold">Portal Zeladoria de São Vicente</span>
+                <span className="text-x font-bold">Portal Zeladoria de São Vicente</span>
             </div>
 
             <div className="flex-none md:hidden">
