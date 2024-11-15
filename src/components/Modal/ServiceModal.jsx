@@ -69,13 +69,14 @@ const ServiceModal = ({ service, newStatus, onClose, onStatusChange, onUpdateSer
                 <h2 className="font-bold text-lg">Detalhes do Serviço</h2>
                 <p>Protocolo: {service.protocolo}</p>
                 <p>Serviço: {service.servico}</p>
+                <p>Data da Solicitação: {service.data}</p>
+                <p>Bairro: {service.bairro}</p>
                 <p>Rua: {service.rua}</p>
                 <p>Número: {service.numero}</p>
-                <p>Bairro: {service.bairro}</p>
-                <p>Data da Solicitação: {service.data}</p>
                 <p>Prazo: {service.data_prevista}</p>
                 <p>Solicitante: {service.user_name}</p>
                 <p>Telefone: {service.user_phone}</p>
+                <p>Descrição: {service.desc}</p>
 
                 <div className="mt-4">
                     <h3 className="font-bold">Anexo:</h3>
