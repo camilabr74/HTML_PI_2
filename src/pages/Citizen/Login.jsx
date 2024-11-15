@@ -4,6 +4,8 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import ButtonOutline from '../../components/ButtonOutline/ButtonOutline';
+import logo from '/src/assets/logo.png';
+
 
 const Login = ({ onSubmit }) => {
   const [email, setEmail] = useState('');
@@ -38,7 +40,15 @@ const Login = ({ onSubmit }) => {
   return (
 
     <div>
+
+      <div className="flex justify-center items-center">
+        <img src={logo} alt="Logo" className="mx-2 w-32" />
+      </div>
       <BaseForm onSubmit={handleFormSubmit}>
+
+        <span className="text-xl font-bold mb-8 flex justify-center items-center" style={{ fontFamily: 'Roboto, sans-serif' }}>
+          LOGIN DO CIDADÃO
+        </span>
         <div>
           <label htmlFor="email" className="block text-sm font-medium text-gray-700">
             E-mail
@@ -73,9 +83,9 @@ const Login = ({ onSubmit }) => {
 
       </BaseForm>
 
-      <Link className="link link-accent px-12 pt" to="/HTML_PI_2/sign-up">Não tem conta? Cadastre-se!</Link>
+      <Link className="link link-accent px-12" to="/HTML_PI_2/sign-up">Não tem conta? Cadastre-se!</Link>
 
-      <ButtonOutline to="/HTML_PI_2/login-goverment" className="w-1/4 mt-12">
+      <ButtonOutline to="/HTML_PI_2/login-goverment" className="w-1/2 m-12">
         @prefeiturasv
       </ButtonOutline>
 

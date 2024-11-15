@@ -1,31 +1,23 @@
 import ButtonCTA from "../../components/ButtonCTA/ButtonCTA";
-import MyRequestsTable from "../../components/MyRequests/MyRequests";
+import ServiceList from "../../components/ServiceList/ServiceList";
 
 const HomeCitizen = () => {
   return (
     <>
-      <section>
-        <h1>
-          Bem-vindo, Camis
-        </h1>
-      </section>
+
+      <h1 className="text-2xl p-8 font-bold text-accent">
+        Bem-vindo ao Portal, vicentino!
+      </h1>
 
       <section className="w-full flex justify-center py-8">
         <ButtonCTA to="/HTML_PI_2/service-selection">Solicitar Serviço</ButtonCTA>
       </section>
 
       <section>
-        <h1>
-          Minhas solicitações
-        </h1>
-        <MyRequestsTable></MyRequestsTable>
+        <ServiceList endpoint='https://orlok.pythonanywhere.com/api/v1/citizen/requests' />
       </section>
     </>
 
-    // <div className="flex flex-col items-center justify-center h-screen bg-gray-100">
-    //   <h1 className="text-4xl font-bold mb-6">Bem-vindo à página Home Citizen</h1>
-    //   <Button>Clique aqui</Button>
-    // </div>
 
   );
 };

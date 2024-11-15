@@ -1,6 +1,5 @@
 import React from "react";
-import { Route, BrowserRouter, Routes } from "react-router-dom";
-import GetData from '../components/MyRequests/MyRequests.jsx';
+import { Route, BrowserRouter, Routes, HashRouter } from "react-router-dom";
 import Navbar from "../components/Navbar/Navbar";
 import SignUp from "../pages/Citizen/SignUp.jsx";
 import HomeCitizen from "../pages/Citizen/HomeCitizen.jsx";
@@ -16,7 +15,7 @@ const AppRouter = () => {
         const isAdmin = true; 
     
         return (
-            <BrowserRouter>
+            <HashRouter>
                 <Navbar isAdmin={isAdmin} />
                 <Routes>
                     <Route path="/HTML_PI_2/home" element={<HomeCitizen />} />
@@ -30,7 +29,7 @@ const AppRouter = () => {
                     <Route path="/HTML_PI_2/home-employee" element={<HomeEmployee />} />
                     <Route path="/" element={<Login />} />
                 </Routes>
-            </BrowserRouter>
+            </HashRouter>
         );
     };
 

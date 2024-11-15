@@ -33,15 +33,11 @@ const ServiceAdd = () => {
   // Recuperar o serviço selecionado do localStorage ao carregar o componente
   useEffect(() => {
     const selectedService = localStorage.getItem('selectedService');
-    const serviceDescription = localStorage.getItem('serviceDescription');
 
     if (selectedService) {
       setServico(selectedService); // Define o estado com o serviço recuperado
     }
 
-    if (serviceDescription) {
-      setDesc(serviceDescription); // Define o estado com a descrição recuperada
-    }
   }, []);
 
   const handleFormSubmit = async (e) => {
@@ -115,9 +111,18 @@ const ServiceAdd = () => {
     setBairro('');
   };
 
+  // Função para atualizar o valor da descrição
+  const handleChange = (e) => {
+    setDesc(e.target.value);
+  };
+
   return (
     <BaseForm onSubmit={handleFormSubmit}>
 
+      <h1 className="text-2xl p-2 font-bold text-accent">
+        SOLICITAR SERVIÇO
+      </h1>
+      
       <div>
         <label htmlFor="servico" className="block text-sm font-medium text-gray-700">Serviço</label>
         <input
@@ -129,19 +134,6 @@ const ServiceAdd = () => {
           className="input input-bordered w-full mt-1"
           required
         />
-      </div>
-
-      <div>
-        <label htmlFor="desc" className="block text-sm font-medium text-gray-700">Descrição</label>
-        <textarea
-          id="desc"
-          value={desc}
-          readOnly
-          placeholder="Digite a descrição"
-          className="textarea textarea-bordered w-full mt-1"
-          rows="auto"
-          required
-        ></textarea>
       </div>
 
       <div role="alert" className="alert alert-warning">
@@ -247,6 +239,19 @@ const ServiceAdd = () => {
           className="input input-bordered w-full mt-1"
           required
         />
+      </div>
+
+      <div>
+        <label htmlFor="desc" className="block text-sm font-medium text-gray-700">Descreva com detalhes a sua solicitação</label>
+        <textarea
+          id="desc"
+          value={desc} // O valor da descrição vem do estado
+          onChange={handleChange} // Atualiza o estado quando o usuário digita
+          placeholder="Descreva sua solicitação (ex: local, proximidade, tipo de material a ser retirado, etc)"
+          className="textarea textarea-bordered w-full mt-1"
+          rows="3"
+          required
+        ></textarea>
       </div>
 
       <div role="alert" className="alert">

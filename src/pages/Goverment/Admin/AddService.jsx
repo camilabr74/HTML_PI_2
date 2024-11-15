@@ -59,7 +59,12 @@ const AddNewService = ({ onSubmit }) => {
   };
 
   return (
+
     <BaseForm onSubmit={handleFormSubmit}>
+
+      <h1 className="text-2xl p-2 font-bold text-accent">
+        ADICIONAR SERVIÇO
+      </h1>
 
       <div>
         <label htmlFor="name" className="block text-sm font-medium text-gray-700">Nome</label>

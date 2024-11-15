@@ -15,7 +15,7 @@ const EmployeeRegisterForm = () => {
   const handleFormSubmit = async (event) => {
     event.preventDefault();
 
-    const token = localStorage.getItem('authToken'); 
+    const token = localStorage.getItem('authToken');
     if (!token) {
       setToastMessage('Acesso negado. Faça login como administrador.');
       setToastType('alert-info');
@@ -35,12 +35,12 @@ const EmployeeRegisterForm = () => {
         },
         {
           headers: {
-            Authorization: `Bearer ${token}`, 
+            Authorization: `Bearer ${token}`,
           },
         }
       );
       console.log('Funcionário cadastrado com sucesso', response.data);
-      
+
       // Limpa os campos do formulário após o envio
       setNome('');
       setCargo('');
@@ -63,6 +63,11 @@ const EmployeeRegisterForm = () => {
 
   return (
     <BaseForm onSubmit={handleFormSubmit}>
+
+      <h1 className="text-2xl p-2 font-bold text-accent">
+        ADICIONAR FUNCIONÁRIO
+      </h1>
+
       <div>
         <label htmlFor="nome" className="block text-sm font-medium text-gray-700">Nome</label>
         <input
