@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import logo from '/src/assets/logo.png';
 
 const Navbar = ({ isAdmin, isLoggedIn, isEmployee, onLogout }) => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -16,7 +17,9 @@ const Navbar = ({ isAdmin, isLoggedIn, isEmployee, onLogout }) => {
     return (
         <div className="navbar bg-base-100 shadow-md flex items-center justify-between p-4">
             <div className="flex items-center">
-                <img src="./src/assets/logo.png" alt="Logo" className="h-10 w-10 mr-2" />
+
+                <img src={logo} alt="Logo" className="h-10 w-10 mr-2" />
+
                 <span className="text-xl font-bold">Portal Zeladoria de São Vicente</span>
             </div>
 
