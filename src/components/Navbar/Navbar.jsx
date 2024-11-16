@@ -11,7 +11,6 @@ const Navbar = ({ isAdmin, isLoggedIn, isEmployee, onLogout }) => {
     const closeMenu = () => setIsMenuOpen(false);
 
     // Condições para exibir a navbar simples ou com botões adicionais
-    const isLoginOrSignUp = location.pathname === '/HTML_PI_2/login' || location.pathname === '/HTML_PI_2/sign-up';
     const isCitizenRoutes = location.pathname === '/HTML_PI_2/home' || location.pathname === '/HTML_PI_2/service-selection' || location.pathname === '/HTML_PI_2/service-request';
     const isEmployeeRoutes = location.pathname === '/HTML_PI_2/add-new-service' || location.pathname === '/HTML_PI_2/register-employee' || location.pathname === '/HTML_PI_2/home-employee';
 
@@ -60,10 +59,7 @@ const Navbar = ({ isAdmin, isLoggedIn, isEmployee, onLogout }) => {
                             </svg>
                         </button>
                         <ul>
-                            {isLoginOrSignUp ? (
-                                // Navbar simples sem botões
-                                <li><Link to="/HTML_PI_2/login" className="btn btn-ghost">Login</Link></li>
-                            ) : isCitizenRoutes ? (
+                            { isCitizenRoutes ? (
                                 // Navbar do cidadão com botão Home
                                 <li><Link to="/HTML_PI_2/home" className="btn btn-ghost">Home</Link></li>
                             ) : isEmployeeRoutes ? (
@@ -81,10 +77,7 @@ const Navbar = ({ isAdmin, isLoggedIn, isEmployee, onLogout }) => {
 
             <div className="navbar-end hidden md:flex">
                 <ul className="menu menu-horizontal px-1">
-                    {isLoginOrSignUp ? (
-                        // Navbar simples sem botões
-                        <li><Link to="/HTML_PI_2/login" className="btn btn-ghost">Login</Link></li>
-                    ) : isCitizenRoutes ? (
+                    {isCitizenRoutes ? (
                         // Navbar do cidadão com botão Home
                         <li><Link to="/HTML_PI_2/home" className="btn btn-ghost">Página Inicial</Link></li>
                     ) : isEmployeeRoutes ? (
