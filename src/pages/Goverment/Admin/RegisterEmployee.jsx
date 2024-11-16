@@ -69,7 +69,7 @@ const EmployeeRegisterForm = () => {
       </h1>
 
       <div>
-        <label htmlFor="nome" className="block text-sm font-medium text-gray-700">Nome</label>
+        <label htmlFor="nome" className="block text-sm font-medium form-label">Nome</label>
         <input
           type="text"
           id="nome"
@@ -82,7 +82,7 @@ const EmployeeRegisterForm = () => {
       </div>
 
       <div>
-        <label htmlFor="cargo" className="block text-sm font-medium text-gray-700">Cargo</label>
+        <label htmlFor="cargo" className="block text-sm font-medium form-label">Cargo</label>
         <input
           type="text"
           id="cargo"
@@ -95,7 +95,7 @@ const EmployeeRegisterForm = () => {
       </div>
 
       <div>
-        <label htmlFor="email" className="block text-sm font-medium text-gray-700">E-mail</label>
+        <label htmlFor="email" className="block text-sm font-medium form-label">E-mail</label>
         <input
           type="email"
           id="email"
@@ -108,7 +108,7 @@ const EmployeeRegisterForm = () => {
       </div>
 
       <div>
-        <label htmlFor="senha" className="block text-sm font-medium text-gray-700">Senha</label>
+        <label htmlFor="senha" className="block text-sm font-medium form-label">Senha</label>
         <input
           type="password"
           id="senha"
