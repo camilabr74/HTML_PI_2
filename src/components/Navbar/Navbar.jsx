@@ -16,14 +16,15 @@ const Navbar = ({ isAdmin, isLoggedIn, isEmployee, onLogout }) => {
     const isEmployeeRoutes = location.pathname === '/HTML_PI_2/add-new-service' || location.pathname === '/HTML_PI_2/register-employee' || location.pathname === '/HTML_PI_2/home-employee';
 
     return (
-        <div className="navbar bg-base-100 shadow-md flex items-center justify-between p-4">
+        <div className="navbar bg-base-100 shadow-md flex items-center justify-between p-2">
             <div className="flex items-center">
-
                 <img src={logo} alt="Logo" className="h-10 w-10 mr-2" />
-
-                <span className="text-x font-bold">Portal Zeladoria de São Vicente</span>
-
-                <ThemeToggle /> 
+                <span className="font-bold text-sm flex items-center">
+                    Portal Zeladoria<br />de São Vicente
+                </span>
+            </div>
+            <div className='ml-auto'>
+                <ThemeToggle />
             </div>
 
             <div className="flex-none md:hidden">
