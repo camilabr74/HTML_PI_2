@@ -41,7 +41,7 @@ const Login = ({ onSubmit }) => {
 
     <div>
 
-      <div className="flex justify-center items-center">
+      <div className="flex justify-center items-center mt-8">
         <img src={logo} alt="Logo" className="mx-2 w-32" />
       </div>
       <BaseForm onSubmit={handleFormSubmit}>

@@ -36,7 +36,7 @@ const LoginGoverment = ({ onSubmit }) => {
 
   return (
     <div>
-      <div className="flex justify-center items-center">
+      <div className="flex justify-center items-center mt-8">
         <img src={brasao} alt="Logo" className="mx-auto w-48" />
       </div>
 
