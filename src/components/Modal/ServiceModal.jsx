@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { useState, useEffect } from 'react';
+import ButtonCTA from '../ButtonCTA/ButtonCTA';
 
 const ServiceModal = ({ service, newStatus, onClose, onStatusChange, onUpdateService, showDateAndStatusFields }) => {
     const [scheduledDate, setScheduledDate] = useState(service?.agendamento || '');
@@ -129,9 +130,9 @@ const ServiceModal = ({ service, newStatus, onClose, onStatusChange, onUpdateSer
 
                 <div className="modal-action mt-4 flex justify-end space-x-2">
                     {showDateAndStatusFields && (
-                        <button className="btn btn-success" onClick={handleUpdateStatus}>
+                        <ButtonCTA  onClick={handleUpdateStatus}>
                             Atualizar Status
-                        </button>
+                        </ButtonCTA>
                     )}
                     <button className="btn" onClick={onClose}>
                         Fechar

@@ -28,7 +28,7 @@ function ServiceSelection() {
     localStorage.setItem('serviceDescription', descricaoServico); // Armazena a descrição do serviço
 
     setTimeout(() => {
-      window.location.href = '/HTML_PI_2#/HTML_PI_2/service-request'; // Redireciona para a página de solicitação de serviço
+      window.location.href = '#/service-request'; // Redireciona para a página de solicitação de serviço
     }, 100); // Adiciona um pequeno atraso para garantir que o localStorage seja atualizado
   };
 
@@ -36,9 +36,9 @@ function ServiceSelection() {
     <div className="w-full p-8">
 
       <h1 className="text-2xl p-2 font-bold text-accent">
-        SERVIÇOS DE ZELADORIA      
+        SERVIÇOS DE ZELADORIA
       </h1>
-      
+
       {error && <p className="text-red-500">{error}</p>}
       {servicos.length > 0 ? (
         servicos.map((servico) => (
@@ -48,8 +48,10 @@ function ServiceSelection() {
               {servico.nome}
             </div>
             <div className="collapse-content">
-              <p>{servico.desc}</p>
-              <p>{servico.prazo}</p>
+              <p style={{ whiteSpace: 'pre-line' }}>
+                {servico.desc}
+              </p><br></br>
+              <p>{`PRAZO: ${servico.prazo} dias`}</p>
               <div className="flex flex-col justify-center items-center">
                 <ButtonCTA
                   className="btn btn-primary mt-4"

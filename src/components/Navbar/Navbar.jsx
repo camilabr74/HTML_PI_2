@@ -11,19 +11,19 @@ const Navbar = ({ isAdmin, isLoggedIn, isEmployee, onLogout }) => {
     const closeMenu = () => setIsMenuOpen(false);
 
     // Condições para exibir a navbar simples ou com botões adicionais
-    const isLoginOrSignUp = location.pathname === '/HTML_PI_2/login' || location.pathname === '/HTML_PI_2/sign-up';
-    const isCitizenRoutes = location.pathname === '/HTML_PI_2/home' || location.pathname === '/HTML_PI_2/service-selection' || location.pathname === '/HTML_PI_2/service-request';
-    const isEmployeeRoutes = location.pathname === '/HTML_PI_2/add-new-service' || location.pathname === '/HTML_PI_2/register-employee' || location.pathname === '/HTML_PI_2/home-employee';
+    const isCitizenRoutes = location.pathname === '/home' || location.pathname === '/service-selection' || location.pathname === '/service-request';
+    const isEmployeeRoutes = location.pathname === '/add-new-service' || location.pathname === '/register-employee' || location.pathname === '/home-employee';
 
     return (
-        <div className="navbar bg-base-100 shadow-md flex items-center justify-between p-4">
+        <div className="navbar bg-base-100 shadow-md flex items-center justify-between p-2">
             <div className="flex items-center">
-
                 <img src={logo} alt="Logo" className="h-10 w-10 mr-2" />
-
-                <span className="text-x font-bold">Portal Zeladoria de São Vicente</span>
-
-                <ThemeToggle /> 
+                <span className="font-bold text-sm flex items-center">
+                    Portal Zeladoria<br />de São Vicente
+                </span>
+            </div>
+            <div className='ml-auto'>
+                <ThemeToggle />
             </div>
 
             <div className="flex-none md:hidden">
@@ -59,18 +59,15 @@ const Navbar = ({ isAdmin, isLoggedIn, isEmployee, onLogout }) => {
                             </svg>
                         </button>
                         <ul>
-                            {isLoginOrSignUp ? (
-                                // Navbar simples sem botões
-                                <li><Link to="/HTML_PI_2/login" className="btn btn-ghost">Login</Link></li>
-                            ) : isCitizenRoutes ? (
+                            { isCitizenRoutes ? (
                                 // Navbar do cidadão com botão Home
-                                <li><Link to="/HTML_PI_2/home" className="btn btn-ghost">Home</Link></li>
+                                <li><Link to="/home" className="btn btn-ghost">Home</Link></li>
                             ) : isEmployeeRoutes ? (
                                 // Navbar do funcionário com botões adicionais
                                 <>
-                                    <li><Link to="/HTML_PI_2/home-employee" className="btn btn-ghost">Página Inicial</Link></li>
-                                    <li><Link to="/HTML_PI_2/add-new-service" className="btn btn-ghost">Adicionar Novo Serviço</Link></li>
-                                    <li><Link to="/HTML_PI_2/register-employee" className="btn btn-ghost">Cadastrar Funcionário</Link></li>
+                                    <li><Link to="/home-employee" className="btn btn-ghost">Página Inicial</Link></li>
+                                    <li><Link to="/add-new-service" className="btn btn-ghost">Adicionar Novo Serviço</Link></li>
+                                    <li><Link to="/register-employee" className="btn btn-ghost">Cadastrar Funcionário</Link></li>
                                 </>
                             ) : null}
                         </ul>
@@ -80,18 +77,15 @@ const Navbar = ({ isAdmin, isLoggedIn, isEmployee, onLogout }) => {
 
             <div className="navbar-end hidden md:flex">
                 <ul className="menu menu-horizontal px-1">
-                    {isLoginOrSignUp ? (
-                        // Navbar simples sem botões
-                        <li><Link to="/HTML_PI_2/login" className="btn btn-ghost">Login</Link></li>
-                    ) : isCitizenRoutes ? (
+                    {isCitizenRoutes ? (
                         // Navbar do cidadão com botão Home
-                        <li><Link to="/HTML_PI_2/home" className="btn btn-ghost">Página Inicial</Link></li>
+                        <li><Link to="/home" className="btn btn-ghost">Página Inicial</Link></li>
                     ) : isEmployeeRoutes ? (
                         // Navbar do funcionário com botões adicionais
                         <>
-                            <li><Link to="/HTML_PI_2/home-employee" className="btn btn-ghost">Página Inicial</Link></li>
-                            <li><Link to="/HTML_PI_2/add-new-service" className="btn btn-ghost">Adicionar Novo Serviço</Link></li>
-                            <li><Link to="/HTML_PI_2/register-employee" className="btn btn-ghost">Cadastrar Funcionário</Link></li>
+                            <li><Link to="/home-employee" className="btn btn-ghost">Página Inicial</Link></li>
+                            <li><Link to="/add-new-service" className="btn btn-ghost">Adicionar Novo Serviço</Link></li>
+                            <li><Link to="/register-employee" className="btn btn-ghost">Cadastrar Funcionário</Link></li>
                         </>
                     ) : null}
                 </ul>

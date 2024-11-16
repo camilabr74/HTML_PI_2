@@ -28,7 +28,7 @@ const Login = ({ onSubmit }) => {
         const { token } = response.data; // Supondo que o token esteja na resposta
         localStorage.setItem('authToken', token);
         console.log('Usuário autenticado:', response.data);
-        navigate('/HTML_PI_2/home');
+        navigate('/home');
       } else {
         setError('Falha na autenticação.');
       }
@@ -41,7 +41,7 @@ const Login = ({ onSubmit }) => {
 
     <div>
 
-      <div className="flex justify-center items-center">
+      <div className="flex justify-center items-center mt-8">
         <img src={logo} alt="Logo" className="mx-2 w-32" />
       </div>
       <BaseForm onSubmit={handleFormSubmit}>
@@ -83,9 +83,9 @@ const Login = ({ onSubmit }) => {
 
       </BaseForm>
 
-      <Link className="link link-accent px-12" to="/HTML_PI_2/sign-up">Não tem conta? Cadastre-se!</Link>
+      <Link className="link link-accent px-12" to="/sign-up">Não tem conta? Cadastre-se!</Link>
 
-      <ButtonOutline to="/HTML_PI_2/login-goverment" className="w-1/2 m-12">
+      <ButtonOutline to="/login-goverment" className="w-1/2 m-12">
         @prefeiturasv
       </ButtonOutline>
 
