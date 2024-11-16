@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Adicione suas classes personalizadas aqui, se necessário */
+/* Estilos globais */
 * {
   margin: 0;
   padding: 0;
@@ -11,5 +11,125 @@
 }
 
 html {
-    overflow-x: hidden;
-  }
+  overflow-x: hidden;
+}
+html[data-theme="light"] #photo-info,
+html[data-theme="dark"] #photo-info,
+html[data-theme="highcontrast"] #photo-info,
+html[data-theme="highcontrastinverted"] #photo-info {
+  color: #000000; /* Cor preta para todos os temas */
+}
+/* Estilo global para os labels de formulário */
+.form-label {
+  font-size: 0.875rem; /* 14px */
+  font-weight: 500;
+}
+
+/* Ajustes específicos para temas usando data-theme */
+html[data-theme="light"] .form-label,
+html[data-theme="highcontrast"] .form-label {
+  color: #000000; /* Preto para temas claros e alto contraste */
+}
+
+html[data-theme="dark"] .form-label,
+html[data-theme="highcontrastinverted"] .form-label {
+  color: #FFFFFF; /* Branco para temas escuros e alto contraste invertido */
+}
+
+/* H2 e H3 para cada tema */
+html[data-theme="light"] h2,
+html[data-theme="light"] h3 {
+  color: #000000;
+}
+
+html[data-theme="dark"] h2,
+html[data-theme="dark"] h3 {
+  color: #FFFFFF;
+}
+
+html[data-theme="highcontrast"] h2,
+html[data-theme="highcontrast"] h3 {
+  color: #000000;
+}
+
+html[data-theme="highcontrastinverted"] h2,
+html[data-theme="highcontrastinverted"] h3 {
+  color: #FFFFFF;
+}
+
+/* Span para cada tema */
+html[data-theme="light"] span {
+  color: #000000;
+}
+
+html[data-theme="dark"] span {
+  color: #FFFFFF;
+}
+
+html[data-theme="highcontrast"] span {
+  color: #000000;
+}
+
+html[data-theme="highcontrastinverted"] span {
+  color: #FFFFFF;
+}
+
+/* Tamanhos de fonte */
+.font-small {
+  font-size: 14px; /* Tamanho de fonte pequeno */
+}
+
+.font-medium {
+  font-size: 16px; /* Tamanho de fonte médio */
+}
+
+.font-large {
+  font-size: 18px; /* Tamanho de fonte grande */
+}
+
+/* Estilo do botão de alternância de tema */
+/* Tema claro */
+.theme-light {
+  background-color: #ffffff;
+  color: #000000;
+}
+
+/* Tema escuro */
+.theme-dark {
+  background-color: #333333;
+  color: #ffffff;
+}
+
+/* Alto contraste */
+.theme-highcontrast {
+  background-color: #ffff00; /* Amarelo forte */
+  color: #000000;
+}
+
+/* Alto contraste invertido */
+.theme-highcontrastinverted {
+  background-color: #000000;
+  color: #ffffff;
+}
+
+/* Para outras estilizações, como textos e botões */
+.theme-light .theme-toggle-button {
+  background-color: #FFD700; /* Amarelo forte */
+  color: #000000;
+}
+
+.theme-dark .theme-toggle-button {
+  background-color: #333333;
+  color: #FFFFFF;
+}
+
+.theme-highcontrast .theme-toggle-button {
+  background-color: #FF6347; /* Vermelho forte */
+  color: #000000;
+}
+
+.theme-highcontrastinverted .theme-toggle-button {
+  background-color: #00FFFF; /* Ciano */
+  color: #000000;
+}
+

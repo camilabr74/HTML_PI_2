@@ -67,7 +67,7 @@ const AddNewService = ({ onSubmit }) => {
       </h1>
 
       <div>
-        <label htmlFor="name" className="block text-sm font-medium text-gray-700">Nome</label>
+        <label htmlFor="name" className="block text-sm font-medium form-label">Nome</label>
         <input
           type="text"
           id="nome"
@@ -80,7 +80,7 @@ const AddNewService = ({ onSubmit }) => {
       </div>
 
       <div>
-        <label htmlFor="description" className="block text-sm font-medium text-gray-700">Descrição</label>
+        <label htmlFor="description" className="block text-sm font-medium form-label">Descrição</label>
         <textarea
           id="desc"
           value={desc}
@@ -93,7 +93,7 @@ const AddNewService = ({ onSubmit }) => {
       </div>
 
       <div>
-        <label htmlFor="deadline" className="block text-sm font-medium text-gray-700">Prazo para realização (dias)</label>
+        <label htmlFor="deadline" className="block text-sm font-medium form-label">Prazo para realização (dias)</label>
         <input
           type="number"
           id="prazo"
