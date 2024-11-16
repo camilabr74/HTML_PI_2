@@ -11,8 +11,8 @@ const Navbar = ({ isAdmin, isLoggedIn, isEmployee, onLogout }) => {
     const closeMenu = () => setIsMenuOpen(false);
 
     // Condições para exibir a navbar simples ou com botões adicionais
-    const isCitizenRoutes = location.pathname === '/HTML_PI_2/home' || location.pathname === '/HTML_PI_2/service-selection' || location.pathname === '/HTML_PI_2/service-request';
-    const isEmployeeRoutes = location.pathname === '/HTML_PI_2/add-new-service' || location.pathname === '/HTML_PI_2/register-employee' || location.pathname === '/HTML_PI_2/home-employee';
+    const isCitizenRoutes = location.pathname === '/home' || location.pathname === '/service-selection' || location.pathname === '/service-request';
+    const isEmployeeRoutes = location.pathname === '/add-new-service' || location.pathname === '/register-employee' || location.pathname === '/home-employee';
 
     return (
         <div className="navbar bg-base-100 shadow-md flex items-center justify-between p-2">
@@ -61,13 +61,13 @@ const Navbar = ({ isAdmin, isLoggedIn, isEmployee, onLogout }) => {
                         <ul>
                             { isCitizenRoutes ? (
                                 // Navbar do cidadão com botão Home
-                                <li><Link to="/HTML_PI_2/home" className="btn btn-ghost">Home</Link></li>
+                                <li><Link to="/home" className="btn btn-ghost">Home</Link></li>
                             ) : isEmployeeRoutes ? (
                                 // Navbar do funcionário com botões adicionais
                                 <>
-                                    <li><Link to="/HTML_PI_2/home-employee" className="btn btn-ghost">Página Inicial</Link></li>
-                                    <li><Link to="/HTML_PI_2/add-new-service" className="btn btn-ghost">Adicionar Novo Serviço</Link></li>
-                                    <li><Link to="/HTML_PI_2/register-employee" className="btn btn-ghost">Cadastrar Funcionário</Link></li>
+                                    <li><Link to="/home-employee" className="btn btn-ghost">Página Inicial</Link></li>
+                                    <li><Link to="/add-new-service" className="btn btn-ghost">Adicionar Novo Serviço</Link></li>
+                                    <li><Link to="/register-employee" className="btn btn-ghost">Cadastrar Funcionário</Link></li>
                                 </>
                             ) : null}
                         </ul>
@@ -79,13 +79,13 @@ const Navbar = ({ isAdmin, isLoggedIn, isEmployee, onLogout }) => {
                 <ul className="menu menu-horizontal px-1">
                     {isCitizenRoutes ? (
                         // Navbar do cidadão com botão Home
-                        <li><Link to="/HTML_PI_2/home" className="btn btn-ghost">Página Inicial</Link></li>
+                        <li><Link to="/home" className="btn btn-ghost">Página Inicial</Link></li>
                     ) : isEmployeeRoutes ? (
                         // Navbar do funcionário com botões adicionais
                         <>
-                            <li><Link to="/HTML_PI_2/home-employee" className="btn btn-ghost">Página Inicial</Link></li>
-                            <li><Link to="/HTML_PI_2/add-new-service" className="btn btn-ghost">Adicionar Novo Serviço</Link></li>
-                            <li><Link to="/HTML_PI_2/register-employee" className="btn btn-ghost">Cadastrar Funcionário</Link></li>
+                            <li><Link to="/home-employee" className="btn btn-ghost">Página Inicial</Link></li>
+                            <li><Link to="/add-new-service" className="btn btn-ghost">Adicionar Novo Serviço</Link></li>
+                            <li><Link to="/register-employee" className="btn btn-ghost">Cadastrar Funcionário</Link></li>
                         </>
                     ) : null}
                 </ul>

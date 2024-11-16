@@ -37,7 +37,7 @@ function SignUp() {
         // Redireciona para a página de login após 2.5 segundos
         setTimeout(() => {
           setShowToast(false); // Esconde o toast
-          navigate('/HTML_PI_2/login'); // Redireciona para a página de login
+          navigate('/login'); // Redireciona para a página de login
         }, 3000); // 2.5 segundos
       })
       .catch((error) => {
@@ -122,11 +122,11 @@ function SignUp() {
           </div>
         )}
       </BaseForm>
-      <Link className="link link-accent px-12 mb-24 mt-4" to="/HTML_PI_2/login">
+      <Link className="link link-accent px-12 mb-24 mt-4" to="/login">
         Já tem conta? Faça login!
       </Link>
 
-      <ButtonOutline to="/HTML_PI_2/login-goverment" className="w-1/2 m-12">
+      <ButtonOutline to="/login-goverment" className="w-1/2 m-12">
         @prefeiturasv
       </ButtonOutline>
 
