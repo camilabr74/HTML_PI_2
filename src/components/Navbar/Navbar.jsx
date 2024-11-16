@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import logo from '/src/assets/logo.png';
+import ThemeToggle from '../ThemeControl/ThemeControl';
 
 const Navbar = ({ isAdmin, isLoggedIn, isEmployee, onLogout }) => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -21,6 +22,8 @@ const Navbar = ({ isAdmin, isLoggedIn, isEmployee, onLogout }) => {
                 <img src={logo} alt="Logo" className="h-10 w-10 mr-2" />
 
                 <span className="text-x font-bold">Portal Zeladoria de São Vicente</span>
+
+                <ThemeToggle /> 
             </div>
 
             <div className="flex-none md:hidden">

@@ -54,7 +54,7 @@ function SignUp() {
   return (
     <BaseForm onSubmit={handleSignUpSubmit}>
       <div>
-        <label htmlFor="nome" className="block text-sm font-medium text-gray-700">Nome</label>
+        <label htmlFor="nome" className="block text-sm font-medium form-label">Nome</label>
         <input
           type="text"
           id="nome"
@@ -67,7 +67,7 @@ function SignUp() {
       </div>
 
       <div>
-        <label htmlFor="email" className="block text-sm font-medium text-gray-700">Email</label>
+        <label htmlFor="email" className="block text-sm font-medium form-label">Email</label>
         <input
           type="email"
           id="email"
@@ -80,7 +80,7 @@ function SignUp() {
       </div>
 
       <div>
-        <label htmlFor="telefone" className="block text-sm font-medium text-gray-700">Telefone</label>
+        <label htmlFor="telefone" className="block text-sm font-medium form-label">Telefone</label>
         <InputMask
           mask="(99) 99999-9999"
           value={telefone}
@@ -92,7 +92,7 @@ function SignUp() {
       </div>
 
       <div>
-        <label htmlFor="senha" className="block text-sm font-medium text-gray-700">Senha</label>
+        <label htmlFor="senha" className="block text-sm font-medium form-label">Senha</label>
         <input
           type="password"
           id="senha"

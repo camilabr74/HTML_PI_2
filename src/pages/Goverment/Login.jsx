@@ -47,7 +47,7 @@ const LoginGoverment = ({ onSubmit }) => {
             ÁREA DA PREFEITURA
           </span>
 
-          <label htmlFor="email" className="block text-sm font-medium text-gray-700">
+          <label htmlFor="email" className="block text-sm font-medium form-label">
             E-mail
           </label>
           <input
@@ -62,7 +62,7 @@ const LoginGoverment = ({ onSubmit }) => {
         </div>
 
         <div>
-          <label htmlFor="senha" className="block text-sm font-medium text-gray-700">
+          <label htmlFor="senha" className="block text-sm font-medium form-label">
             Senha
           </label>
           <input

@@ -124,7 +124,7 @@ const ServiceAdd = () => {
       </h1>
       
       <div>
-        <label htmlFor="servico" className="block text-sm font-medium text-gray-700">Serviço</label>
+        <label htmlFor="servico" className="block text-sm font-medium form-label">Serviço</label>
         <input
           type="text"
           id="servico"
@@ -148,11 +148,11 @@ const ServiceAdd = () => {
             strokeWidth="2"
             d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
         </svg>
-        <span>Atenção! O endereço da solicitação deve ser o do local onde o serviço será realizado.</span>
+        <span id="photo-info">Atenção! O endereço da solicitação deve ser o do local onde o serviço será realizado.</span>
       </div>
 
       <div>
-        <label className="block text-sm font-medium text-gray-700">Área</label>
+        <label className="block text-sm font-medium form-label">Área</label>
         <div className="mt-1 space-y-2">
           <label className="flex items-center">
             <input
@@ -184,7 +184,7 @@ const ServiceAdd = () => {
       <div>
         <label
           htmlFor="bairro"
-          className="block text-sm font-medium text-gray-700"
+          className="block text-sm font-medium form-label"
         >
           {`Bairro - Exibindo os bairros da área selecionada acima: ${area || ""}`}
         </label>
@@ -204,7 +204,7 @@ const ServiceAdd = () => {
       </div>
 
       <div>
-        <label htmlFor="cep" className="block text-sm font-medium text-gray-700">CEP</label>
+        <label htmlFor="cep" className="block text-sm font-medium form-label">CEP</label>
         <InputMask
           mask="99999-999"
           value={cep}
@@ -216,7 +216,7 @@ const ServiceAdd = () => {
       </div>
 
       <div>
-        <label htmlFor="rua" className="block text-sm font-medium text-gray-700">Rua</label>
+        <label htmlFor="rua" className="block text-sm font-medium form-label">Rua</label>
         <input
           type="text"
           id="rua"
@@ -229,7 +229,7 @@ const ServiceAdd = () => {
       </div>
 
       <div>
-        <label htmlFor="numero" className="block text-sm font-medium text-gray-700">Número</label>
+        <label htmlFor="numero" className="block text-sm font-medium form-label">Número</label>
         <input
           type="text"
           id="numero"
@@ -242,13 +242,14 @@ const ServiceAdd = () => {
       </div>
 
       <div>
-        <label htmlFor="desc" className="block text-sm font-medium text-gray-700">Descreva com detalhes a sua solicitação</label>
+        <label htmlFor="desc" className="block text-sm font-medium form-label">Descreva com detalhes a sua solicitação</label>
         <textarea
           id="desc"
           value={desc} // O valor da descrição vem do estado
           onChange={handleChange} // Atualiza o estado quando o usuário digita
           placeholder="Descreva sua solicitação (ex: local, proximidade, tipo de material a ser retirado, etc)"
           className="textarea textarea-bordered w-full mt-1"
+          style={{ whiteSpace: 'pre-line' }}
           rows="3"
           required
         ></textarea>
@@ -271,7 +272,7 @@ const ServiceAdd = () => {
       </div>
 
       <div>
-        <label htmlFor="anexo" className="block text-sm font-medium text-gray-700">Anexo</label>
+        <label htmlFor="anexo" className="block text-sm font-medium form-label">Anexo</label>
         <input
           type="file"
           id="anexo"
