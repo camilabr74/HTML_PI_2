@@ -4,10 +4,8 @@ import logo from '/src/assets/logo.png';
 import ThemeToggle from '../ThemeControl/ThemeControl';
 
 const logout = ()=>{
-    //console.log(sessionStorage.getItem('authToken'))
     sessionStorage.removeItem('authToken');
     window.location.href = '/HTML_PI_2/login';
-    //console.log(sessionStorage.getItem('authToken'))
         }
 const Navbar = ({ isAdmin, isLoggedIn, isEmployee, onLogout }) => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
