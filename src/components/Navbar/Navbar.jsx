@@ -3,6 +3,10 @@ import { Link, useLocation } from 'react-router-dom';
 import logo from '/src/assets/logo.png';
 import ThemeToggle from '../ThemeControl/ThemeControl';
 
+const logout = ()=>{
+    sessionStorage.removeItem('authToken');
+    window.location.href = '/HTML_PI_2/login';
+        }
 const Navbar = ({ isAdmin, isLoggedIn, isEmployee, onLogout }) => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const location = useLocation(); // Captura a URL atual
@@ -61,13 +65,20 @@ const Navbar = ({ isAdmin, isLoggedIn, isEmployee, onLogout }) => {
                         <ul>
                             { isCitizenRoutes ? (
                                 // Navbar do cidadão com botão Home
+
+                    <>
                                 <li><Link to="/home" className="btn btn-ghost">Home</Link></li>
+                        <button className="btn btn-ghost" onClick={logout}>Encerrar Sessão</button>
+                    </>
+                    
                             ) : isEmployeeRoutes ? (
                                 // Navbar do funcionário com botões adicionais
                                 <>
                                     <li><Link to="/home-employee" className="btn btn-ghost">Página Inicial</Link></li>
                                     <li><Link to="/add-new-service" className="btn btn-ghost">Adicionar Novo Serviço</Link></li>
                                     <li><Link to="/register-employee" className="btn btn-ghost">Cadastrar Funcionário</Link></li>
+                                    <button className="btn btn-ghost" onClick={logout}>Encerrar Sessão</button>
+                                    
                                 </>
                             ) : null}
                         </ul>
@@ -79,7 +90,9 @@ const Navbar = ({ isAdmin, isLoggedIn, isEmployee, onLogout }) => {
                 <ul className="menu menu-horizontal px-1">
                     {isCitizenRoutes ? (
                         // Navbar do cidadão com botão Home
+            
                         <li><Link to="/home" className="btn btn-ghost">Página Inicial</Link></li>
+    
                     ) : isEmployeeRoutes ? (
                         // Navbar do funcionário com botões adicionais
                         <>
