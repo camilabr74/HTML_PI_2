@@ -5,7 +5,7 @@ import ThemeToggle from '../ThemeControl/ThemeControl';
 
 const logout = ()=>{
     sessionStorage.removeItem('authToken');
-    window.location.href = '/HTML_PI_2/login';
+    window.location.href = '/HTML_PI_2';
         }
 const Navbar = ({ isAdmin, isLoggedIn, isEmployee, onLogout }) => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
