@@ -41,8 +41,8 @@ const ThemeToggle = () => {
         {theme === 'light' && 'Claro'}
         {theme === 'dark' && 'Escuro'}
         {theme === 'highcontrast' && 'Alto Contraste'}
-        {theme === 'highcontrastinverted' && 'Alto Contraste Invertido'}
-        {theme === 'highcontrastmonochrome' && 'Alto Contraste Monocromático'}
+        {theme === 'highcontrastinverted' && 'A. C. Invertido'}
+        {theme === 'highcontrastmonochrome' && 'A. C. Monocromático'}
       </button>
     </div>
   );

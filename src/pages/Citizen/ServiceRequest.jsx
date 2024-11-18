@@ -84,7 +84,7 @@ const ServiceAdd = () => {
         setImagePreview(null);
 
         setTimeout(() => {
-          navigate('/HTML_PI_2/home');
+          navigate('/home');
         }, 2500);
       } else {
         setToastMessage(`Erro: ${result.error}`);
