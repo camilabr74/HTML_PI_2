@@ -3,6 +3,12 @@ import { Link, useLocation } from 'react-router-dom';
 import logo from '/src/assets/logo.png';
 import ThemeToggle from '../ThemeControl/ThemeControl';
 
+const logout = ()=>{
+    //console.log(sessionStorage.getItem('authToken'))
+    sessionStorage.removeItem('authToken');
+    window.location.href = '/HTML_PI_2/login';
+    //console.log(sessionStorage.getItem('authToken'))
+        }
 const Navbar = ({ isAdmin, isLoggedIn, isEmployee, onLogout }) => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const location = useLocation(); // Captura a URL atual
@@ -64,13 +70,18 @@ const Navbar = ({ isAdmin, isLoggedIn, isEmployee, onLogout }) => {
                                 <li><Link to="/HTML_PI_2/login" className="btn btn-ghost">Login</Link></li>
                             ) : isCitizenRoutes ? (
                                 // Navbar do cidadão com botão Home
+                    <>
                                 <li><Link to="/HTML_PI_2/home" className="btn btn-ghost">Home</Link></li>
+                        <button className="btn btn-ghost" onClick={logout}>Encerrar Sessão</button>
+                    </>
+                    
                             ) : isEmployeeRoutes ? (
                                 // Navbar do funcionário com botões adicionais
                                 <>
                                     <li><Link to="/HTML_PI_2/home-employee" className="btn btn-ghost">Página Inicial</Link></li>
                                     <li><Link to="/HTML_PI_2/add-new-service" className="btn btn-ghost">Adicionar Novo Serviço</Link></li>
                                     <li><Link to="/HTML_PI_2/register-employee" className="btn btn-ghost">Cadastrar Funcionário</Link></li>
+                                    <button className="btn btn-ghost" onClick={logout}>Encerrar Sessão</button>
                                 </>
                             ) : null}
                         </ul>
@@ -85,6 +96,7 @@ const Navbar = ({ isAdmin, isLoggedIn, isEmployee, onLogout }) => {
                         <li><Link to="/HTML_PI_2/login" className="btn btn-ghost">Login</Link></li>
                     ) : isCitizenRoutes ? (
                         // Navbar do cidadão com botão Home
+            
                         <li><Link to="/HTML_PI_2/home" className="btn btn-ghost">Página Inicial</Link></li>
                     ) : isEmployeeRoutes ? (
                         // Navbar do funcionário com botões adicionais
