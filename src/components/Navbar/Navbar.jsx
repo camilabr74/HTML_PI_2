@@ -90,8 +90,11 @@ const Navbar = ({ isAdmin, isLoggedIn, isEmployee, onLogout }) => {
                 <ul className="menu menu-horizontal px-1">
                     {isCitizenRoutes ? (
                         // Navbar do cidadão com botão Home
+                        <>
+                            <li><Link to="/home" className="btn btn-ghost">Página Inicial</Link></li>
+                            <li><button className="btn btn-outline btn-neutral ml-4" onClick={logout}>Sair</button></li>
 
-                        <li><Link to="/home" className="btn btn-ghost">Página Inicial</Link></li>
+                        </>
 
                     ) : isEmployeeRoutes ? (
                         // Navbar do funcionário com botões adicionais
@@ -99,12 +102,10 @@ const Navbar = ({ isAdmin, isLoggedIn, isEmployee, onLogout }) => {
                             <li><Link to="/home-employee" className="btn btn-ghost">Página Inicial</Link></li>
                             <li><Link to="/add-new-service" className="btn btn-ghost">Adicionar Novo Serviço</Link></li>
                             <li><Link to="/register-employee" className="btn btn-ghost">Cadastrar Funcionário</Link></li>
+                            <li><button className="btn btn-outline btn-neutral ml-4" onClick={logout}>Sair</button></li>
                         </>
                     ) : null}
                 </ul>
-                {isLoggedIn && (
-                    <button className="btn btn-accent ml-4" onClick={onLogout}>Sair</button>
-                )}
             </div>
         </div>
     );
