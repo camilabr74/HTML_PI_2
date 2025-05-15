@@ -10,6 +10,7 @@ import AddNewService from "../pages/Goverment/Admin/AddService.jsx";
 import LoginGoverment from "../pages/Goverment/Login.jsx";
 import ServiceAdd from "../pages/Citizen/ServiceRequest.jsx";
 import HomeEmployee from "../pages/Goverment/HomeEmployee.jsx";
+import DataService from "../pages/Goverment/DataServices.jsx";
 
 const AppRouter = () => {
         const isAdmin = true; 
@@ -26,6 +27,7 @@ const AppRouter = () => {
                     <Route path="/add-new-service" element={<AddNewService />} />
                     <Route path="/register-employee" element={<EmployeeRegisterForm />} />
                     <Route path="/login-goverment" element={<LoginGoverment />} />
+                    <Route path="/data-service" element={<DataService />} />
                     <Route path="/home-employee" element={<HomeEmployee />} />
                     <Route path="/" element={<Login />} />
                 </Routes>

@@ -12,7 +12,7 @@ function HomeEmployee() {
       </h1>
 
       <section className="w-full flex justify-center py-8">
-        <ButtonCTA to="/service-selection">Visualizar Dados</ButtonCTA>
+        <ButtonCTA to="/data-service">Visualizar Dados</ButtonCTA>
       </section>
 
       <ServiceList endpoint='https://orlok.pythonanywhere.com/api/v1/janitorial/' />

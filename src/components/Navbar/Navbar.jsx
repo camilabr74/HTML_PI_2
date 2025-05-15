@@ -16,7 +16,7 @@ const Navbar = ({ isAdmin, isLoggedIn, isEmployee, onLogout }) => {
 
     // Condições para exibir a navbar simples ou com botões adicionais
     const isCitizenRoutes = location.pathname === '/home' || location.pathname === '/service-selection' || location.pathname === '/service-request';
-    const isEmployeeRoutes = location.pathname === '/add-new-service' || location.pathname === '/register-employee' || location.pathname === '/home-employee';
+    const isEmployeeRoutes = location.pathname === '/add-new-service' || location.pathname === '/register-employee' || location.pathname === '/home-employee'  || location.pathname === '/data-service';
 
     return (
         <div className="navbar bg-base-100 shadow-md flex items-center justify-between p-2">
